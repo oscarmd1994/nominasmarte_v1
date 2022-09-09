@@ -1,0 +1,3 @@
+﻿[*] Empresa: 0. Nomina: 0. Mensaje: success. Usuario: MAGUILAR. |->  Stored Procedure: EXEC sp_Actualiza_Datos_Bancarios 2 , 907780 , 12 , '012180015547386805'
+[*] Empresa: 0. Nomina: 0. Mensaje: success. Usuario: MAGUILAR. |->  Stored Procedure: EXEC sp_Actualiza_Datos_Bancarios 2 , 909167 , 127 , '127180013737950271'
+[*] Empresa: 0. Nomina: 0. Mensaje: success. Usuario: MAGUILAR. |->  Stored Procedure: EXEC sp_Actualiza_Datos_Bancarios 2 , 909168 , 12 , '012180015634781889'

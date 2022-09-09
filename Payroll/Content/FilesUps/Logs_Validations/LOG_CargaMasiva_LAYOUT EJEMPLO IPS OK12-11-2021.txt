@@ -1,0 +1,2 @@
+﻿* -- Excepciones -- *[*] Fila = 2, [*] Excepcion = General, [*] Tipo = System.IndexOutOfRangeException, [*] Mensaje = No se puede encontrar la columna 52.
+

@@ -1,0 +1,3 @@
+﻿[*] Empresa: 18. Nomina: 302591. Mensaje: none. Usuario: MAGUILAR. |->  Stored Procedure: EXC sp_Actualiza_Puestos_Empleados 18 , 302591 , 'SUPERVISOR DE CREDITO GRUPAL' , 'SUPERVISION'
+[*] Empresa: 21. Nomina: 700711. Mensaje: none. Usuario: MAGUILAR. |->  Stored Procedure: EXC sp_Actualiza_Puestos_Empleados 21 , 700711 , 'SUPERVISOR DE CREDITO GRUPAL' , 'SUPERVISION'
+[*] Empresa: 21. Nomina: 703706. Mensaje: none. Usuario: MAGUILAR. |->  Stored Procedure: EXC sp_Actualiza_Puestos_Empleados 21 , 703706 , 'SUPERVISOR DE CREDITO GRUPAL' , 'SUPERVISION'

@@ -1,0 +1,100 @@
+﻿<div class="col-md-10 mx-auto border-left-primary border-right-primary bg-white border-bottom-primary rounded p-3">
+  <div class="w-100 row justify-content-between pb-1">
+    <h5 class="font-weight-bold pl-3" style="color: #020F59;">
+      <i class="fas fa-file-invoice-dollar"></i> Caratulas
+    </h5>
+
+  </div>
+  <div class="col-md-12 bg-gray-100 p-3 border border-secondary rounded">
+    <form id="frmCaratulas" class="row">
+      <div class="form-group col-md-4">
+        <label class="font-weight-bold" for="definicionSelect">Definicion</label>
+        <select id="definicionSelect" class="custom-select custom-select-sm" required>
+          <option value="">Select</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label class="font-weight-bold" for="Periodo">Periodo</label>
+        <input id="Periodo" class="form-control form-control-sm" value="" required readonly />
+      </div>
+      <div class="form-group col-md-4">
+        <label class="font-weight-bold" for="tipoPeriodo">Tipo de Periodo</label>
+        <input id="tipoPeriodo" class="form-control form-control-sm" required readonly />
+      </div>
+      <div class="form-group col-md-4">
+        <label class="font-weight-bold" for="Empresa">Empresa</label>
+        <select id="Empresas" class="custom-select custom-select-sm" required>
+          <option value="">Select</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Recibo 2</label>
+        <div class="custom-control custom-switch center col">
+          <input type="checkbox" class="custom-control-input" id="inrecibo2">
+          <label class="custom-control-label" for="inrecibo2">Ver recibo 2 </label>
+        </div>
+      </div>
+      <div class="form-group col-md-4 ">
+        <label>Nominas cerradas</label>
+        <div class="custom-control custom-switch center col">
+          <input type="checkbox" class="custom-control-input" id="inNominaCerrada">
+          <label class="custom-control-label text-danger" for="inNominaCerrada">Ver nominas cerradas</label>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="bg-white mt-3">
+    <table id="tabCaratulas" class="table table-striped table-sm d-none w-75 mx-auto">
+      <thead class="text-center ">
+        <tr>
+          <th class="p-0">RENGLON ID</th>
+          <th class="">NOMBRE</th>
+          <th class="">TOTAL</th>
+        </tr>
+      </thead>
+      <tbody class="scrollbar-tab" id="detalleTabCaratulas"></tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">
+            <div class="row justify-content-end pt-3 pb-1">
+              <div id="btnCaratulasPDFdwl" class="btn btn-sm btn-primary my-auto font-weight-bold">
+                <i class="fas fa-download"></i>  Descarga PDF
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div id="statusDataNotification" class="alert alert-warning alert-dismissible d-none col-md-6 mx-auto" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>Atención!</strong> <span id="notif"></span>
+  </div>
+  <div class="col-md-12 bg-gray-100 pt-2 pb-0 border border-secondary rounded">
+    <div class="d-flex justify-content-end p-3">
+      <div class="col-5">
+
+        <div class="form-group row my-1">
+          <label for="outTotalPercepciones" class="col-md-5">Total Percepciones</label>
+          <input type="text" class="form-control form-control-sm col" id="outTotalPercepciones" readonly>
+        </div>
+
+        <div class="form-group row my-1">
+          <label for="outTotalDeducciones" class="col-md-5">Total Deducciones</label>
+          <input type="text" class="form-control form-control-sm col" id="outTotalDeducciones" readonly>
+        </div>
+
+        <div class="form-group row my-1">
+          <label for="outTotalNeto" class="col-md-5">Total Neto</label>
+          <input type="text" class="form-control form-control-sm col" id="outTotalNeto" readonly>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<input type="hidden" id="inputAnio" value="0" />
+
+<script type="text/javascript" src="~/Scripts/Nomoper/GeneraPDF.js"></script>
+<script type="text/javascript" src="~/Scripts/Nomoper/Caratulas.js"></script>

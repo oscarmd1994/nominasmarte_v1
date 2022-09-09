@@ -1,0 +1,81 @@
+﻿@*Temas*@
+<link rel="stylesheet" href="~/Scripts/jqxGrid/jqwidgets/styles/jqx.base.css" type="text/css" />
+<link rel="stylesheet" href="~/Scripts/jqxGrid/jqwidgets/styles/jqx.arctic.css" type="text/css" />
+<link rel="stylesheet" href="~/Scripts/jqxGrid/jqwidgets/styles/jqx.materialpurple.css" type="text/css" />
+
+<div class="container bg-white border-left-primary pt-3 rounded shadow border-right-primary">
+  <div class="row w-100">
+    <div id="div-most-alert-data-gen" class="col-md-8 offset-2"></div>
+    <h3 class="col-ico font-weight-bold pl-3"><i class="fas fa-file-contract"></i> Kit de contratación</h3>
+    <hr class="col-md-12" />
+    <div class="mx-auto alert alert-primary text-left">
+      <span class="font-weight-bold">Opciones validas para generar un kit de contratación:</span><br />
+      <ul class="">
+        <li>Seleccionar la empresa de la cual se requiera generar los archivos de Alta y/o Baja</li>
+        <li>Empleados con alta y sin calculos en el sistema</li>
+      </ul>
+    </div>
+    <div class="col-md-6 form-group">
+      <label for="DropCategoria" class="font-labels col-ico font-weight-bold text-left col" id="laCategoria">Categoria:</label>
+      <div class="col">
+        <select placeholder="Categoria" tp-select="Grupo" class="form-control form-control-sm" id="DropCategoria">
+          <option value="0">Seleccionan</option>
+          <option value="1">Alta</option>
+          <option value="2">Baja</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-6 form-group">
+      <label for="DroTipoEmple" class="font-labels col-ico font-weight-bold text-left col" id="laTipoEmpleado">Tipo de empleado:</label>
+      <div class="col">
+        <select placeholder="Tipo de empleado" tp-select="Tipo de empleado" class="form-control form-control-sm" id="DroTipoEmple">
+          <option value="0">Selecciona</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="col-md-8 mx-auto">
+      <div class="mx-auto">
+        <div class="mx-auto" id='jqxWidget'>
+          <div class="mx-auto" id="TbKit"></div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex w-100 justify-content-end m-3">
+      <button id="btnGnra" class="btn btn-secondary btn-sm my-auto rounded shadow">
+        Generar Archivo <i class="fas fa-paper-plane ml-1"></i>
+      </button>
+    </div>
+  </div>
+</div>
+@*Botones de flotantes*@
+<div>
+  <button class="flotante1 btn btn-secondary btn-circle shadow" title="Dowland" id="btnDowlan" type="button" value="0" style="visibility:hidden">
+    <i class="fas fa-download"></i>
+  </button>
+</div>
+
+
+
+<script src="~/Scripts/main/KitAltaBaja.js?v=3"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxdata.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxbuttons.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxgrid.sort.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxinput.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxgrid.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxgrid.filter.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxgrid.selection.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxloader.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxscrollbar.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxlistbox.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxdropdownlist.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqwidgets/jqxcheckbox.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqx-all.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxmenu.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxlistbox.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxdropdownlist.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxcheckbox.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxwindow.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxtabs.js"></script>

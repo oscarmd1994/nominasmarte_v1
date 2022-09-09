@@ -1,0 +1,290 @@
+﻿<div class="col-md-10 container font-labels bg-white p-4 shadow shadow-lg border-left-primary border-right-primary rounded">
+  <div class="col-md-12 ">
+    <div class="col-md-12 d-flex justify-content-between">
+      <span class="h5 font-weight-bold text-dark"> Periodos </span>
+      <div class="form-group row my-0">
+
+        <a class="btn btn-dark btn-sm btn-icon-split mx-1" href="~/Content/FilesCargaMasivaIncidencias/FormatoDeIncidencias/Layout_Carga_Masiva_Periodos.xlsx" download target="_blank">
+          <span class="icon text-success"><i class="fas fa-file-excel"></i></span>
+          <span class="text font-labels"> Descargar Formato </span>
+        </a>
+        <div class="btn btn-success btn-icon-split btn-sm mx-1" data-toggle="modal" data-target="#modalCargaMasiva">
+          <span class="icon"><i class="fas fa-upload"></i></span>
+          <span class="text font-labels"> Carga Masiva </span>
+        </div>
+      </div>
+    </div>
+    <hr class="col-md-12" />
+    <table class="table table-sm table-striped table-fechas-periodos col-md-12" id="tabfechasperiodos">
+      <thead>
+        <tr>
+          <th scope="col">Lista de empresas</th>
+        </tr>
+      </thead>
+      <tbody id="bodytab-fechas-periodos">
+      </tbody>
+    </table>
+    <input type="hidden" id="editar_empresa_id" value="" />
+    <input type="hidden" id="editar_id" value="" />
+    <input type="hidden" id="add_anio" value="" />
+    <input type="hidden" id="add_empresa_id" value="" />
+  </div>
+</div>
+<!-- Modal Editar Fechas - Periodos-->
+<div class="modal fade" id="modalEditarFechaPeriodo" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Editar <span class="text-danger h5">Fecha - Periodo</span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="frmAddFechasPeriodos" method="post" class="row was-validated">
+          <div class="form-group col-md-4">
+            <label>Año</label>
+            <input class="form-control form-control-sm" disabled type="number" id="editano" name="editano" min="" required />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Periodo</label>
+            <input class="form-control form-control-sm" type="text" name="editperiodo" id="editperiodo" value="" placeholder="No. Periodo" required />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Inicio</label>
+            <input class="form-control form-control-sm" type="date" name="editfinicio" id="editfinicio" value="" required />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Final</label>
+            <input class="form-control form-control-sm" type="date" name="editffinal" id="editffinal" value="" required />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Proceso</label>
+            <input class="form-control form-control-sm" type="date" name="editfproceso" id="editfproceso" value="" required />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Pago</label>
+            <input class="form-control form-control-sm" type="date" name="editfpago" id="editfpago" value="" required />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Dias Pago</label>
+            <input class="form-control form-control-sm" type="text" name="editdiaspago" id="editdiaspago" value="" required />
+          </div>
+          <div class="form-group col-md-4 text-center">
+            <label class="invisible">sr only</label>
+            <div class="border border-info rounded py-1">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="edespecial">
+                <label class="custom-control-label text-info" for="edespecial">Periodo Especial</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-12 text-center small">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>IMPORTANTE!</strong> Si seleccionas un periodo como especial, este debera ser a partir de 60 en adelante según los periodos especiales ya existentes.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm btn-icon-split" data-dismiss="modal">
+          <span class="icon">
+            <i class="fas fa-times"></i>
+          </span>
+          <span class="text">
+            Cerrar
+          </span>
+        </button>
+        <button id="btnUpdatefechaperiodo" type="button" class="btn btn-success btn-sm btn-icon-split">
+          <span class="icon">
+            <i class="fas fa-save"></i>
+          </span>
+          <span class="text">
+            Actualizar
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Agregar Fechas - Periodos-->
+<div class="modal fade" id="modalAgregarFechaPeriodo" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Agregar <span class="h5">Fecha - Periodo</span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="frmNewFechasPeriodos" method="post" class="row">
+          <div class="form-group col-md-4">
+            <label>Empresa</label>
+            <input class="form-control form-control-sm" type="text" id="inEmpresa_id" name="inEmpresa_id" readonly required />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Año</label>
+            <input class="form-control form-control-sm input-number" type="text" id="inano" name="inano" required />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Tipo Periodo id</label>
+            <input class="form-control form-control-sm input-number" type="text" id="intipoperiodoid" name="intipoperiodoid" readonly required />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Periodo</label>
+            <input class="form-control form-control-sm" type="text" name="inperiodo" id="inperiodo" value="" placeholder="No. Periodo" required />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Inicio</label>
+            <input class="form-control form-control-sm" type="date" name="infinicio" id="infinicio" value="" required />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Final</label>
+            <input class="form-control form-control-sm" type="date" name="inffinal" id="inffinal" value="" required />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Proceso</label>
+            <input class="form-control form-control-sm" type="date" name="infproceso" id="infproceso" value="" required />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Pago</label>
+            <input class="form-control form-control-sm" type="date" name="infpago" id="infpago" value="" required />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Dias Pago</label>
+            <input class="form-control form-control-sm" type="text" name="indiaspago" id="indiaspago" value="15" required />
+          </div>
+          <div class="form-group col-md-4 text-center">
+            <div class="border border-info rounded py-1">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="inespecial">
+                <label class="custom-control-label text-info" for="inespecial">Periodo Especial</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-12 text-center small">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>IMPORTANTE!</strong> Si seleccionas un periodo como especial, este debera ser a partir de 60 en adelante según los periodos especiales ya existentes.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-icon-split btn-sm" data-dismiss="modal">
+          <span class="icon">
+            <i class="fas fa-times"></i>
+          </span>
+          <span class="text">
+            Cerrar
+          </span>
+        </button>
+        <button id="btnsavefechaperiodo" type="button" class="btn btn-primary btn-icon-split btn-sm">
+          <span class="icon">
+            <i class="fas fa-save"></i>
+          </span>
+          <span class="text">
+            Guardar
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Carga masiva de periodos -->
+<div class="modal fade" id="modalCargaMasiva" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-left-primary border-right-primary">
+      <div class="modal-header">
+        <h5 class="modal-title font-weight-bold" id="exampleModalLabel"> <i class="fas fa-upload text-success"></i>  Carga Masiva de Periodos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="frmPeriodosCM" method="post" enctype="multipart/form-data" class="col-md-12 row justify-content-center">
+
+          <div class="custom-file col-md-12" id="customFile">
+            <input type="file" class="custom-file-input custom-file-input-sm" id="file-toup" aria-describedby="fileHelp" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+            <label class="custom-file-label" for="file-toup">
+              Seleccionar Archivo
+            </label>
+          </div>
+          <hr />
+          <div class="form-group mt-4">
+            <button class="btn btn-sm btn-outline-primary mx-auto" id="btnCargaMasiva" type="button" onclick="beforeValidarFile();">
+              <i class="fas fa-check-circle mr-2"></i> Cargar archivo
+            </button>
+          </div>
+
+          <div class="row">
+            <div id="results-file-upload-up" class="d-none col-md-12"></div>
+          </div>
+          <div class="col-md-12 mx-auto collapse" id="collapse-validation-cm"></div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-icon-split btn-sm" data-dismiss="modal">
+          <span class="icon"><i class="fas fa-times"></i></span>
+          <span class="text">Cerrar</span>
+        </button>
+        @*<button type="button" class="btn btn-primary btn-icon-split btn-sm">
+              <span class="icon"><i class="fas fa-file-upload"></i></span>
+              <span class="text"> Cargar </span>
+          </button>*@
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Editar Fecha de pago-->
+<div class="modal fade" id="modalEditarFechaPago" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticLabel">Editar <span class="text-danger h5">fecha de pago</span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="frmFechaPagoEdit" method="post" class="row needs-validation justify-content-center">
+
+          <div class="form-group col-md-10">
+            <label> Fecha de Pago</label>
+            <input class="form-control" type="date" name="edfechapago" id="edfechapago" value="" required />
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-icon-split btn-sm" data-dismiss="modal">
+          <span class="icon"><i class="fas fa-times"></i></span>
+          <span class="text"> Cerrar</span>
+        </button>
+        <button id="btnUpdatefechapago" type="button" class="btn btn-success btn-sm btn-icon-split">
+          <span class="icon"><i class="fas fa-save"></i></span>
+          <span class="text"> Actualizar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="~/Scripts/Catalogos/ModuloCatalogos.js?n=0.4"></script>
+<script>
+  $(function () {
+    LoadTabFechasPeriodos();
+  });
+</script>
+<style>
+  .custom-file-input ~ .custom-file-label::after {
+    content: "\1F50E";
+  }
+</style>

@@ -1,0 +1,50 @@
+﻿<div class="container bg-white border-left-primary p-3 rounded shadow border-right-primary">
+  <div class="row mt-4 ">
+    <div id="div-most-alert-data-gen" class="col-md-10 offset-2"></div>
+    <div class="col-md-12 px-5">
+      <div class="row justify-content-between">
+        <h3 class="font-weight-bold">Monitor de Procesos</h3>
+        <div class="d-flex align-middle">
+          <b class="my-auto">Puede actualizar en:</b>
+          <span class="font-weight-bold my-auto mx-3" id="timer"></span>
+          <div id="btnActualizarMonitor" class="btn btn-success btn-icon-split my-auto">
+            <span class="icon"><i class="fas fa-sync-alt"></i></span>
+            <span class="text">ACTUALIZAR</span>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </div>
+    <div class="col-md-12">
+      <div class="form-group text-center rounded shadow-sm p-1">
+        <div id="tabContainer" class="col-md-12 d-block">
+          <div class="table-responsive" style="text-align:center">
+            <table id="TbProcesos" class="table table table-sm">
+              <thead>
+                <tr>
+                  <th># Tarea</th>
+                  <th>Definicion</th>
+                  <th>Usuario</th>
+                  <th>Inicio</th>
+                  <th>Final</th>
+                  <th>Estatus</th>
+                  @*<th>Progreso</th>*@
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div id="spinnerDiv" class="col-md-12 d-none">
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border my-5 text-info" style="width: 3rem; height: 3rem;" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="~/Scripts/Nomoper/MonitorProcesos2.js?n=1.0"></script>

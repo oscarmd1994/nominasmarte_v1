@@ -1,0 +1,100 @@
+﻿<div class="container font-labels bg-white pt-3">
+  <div class="font-weight-bold h4 text-primary"><i class="fas fa-notes-medical"></i> Registros patronales</div>
+  <div class="dropdown-divider"></div>
+  <div class="form-row">
+    <div class="form-group col-md-12 rounded border-left-primary border-right-primary">
+      <form id="frmRegistrosPatronales" class="bg-light p-4 rounded">
+        <div class="font-weight-bold pt-1 text-center h5">Agregar Nuevo</div>
+        <div class="dropdown-divider pb-2"></div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inAfiliacionImssRP">Afiliacion IMSS</label>
+            <input class="form-control form-control-sm" maxlength="12" type="text" name="inAfiliacionImssRP" id="inAfiliacionImssRP" placeholder="Afiliacion IMSS" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inNombreAfiliacionRP">Nombre Afiliación</label>
+            <input class="form-control form-control-sm" maxlength="50" type="text" name="inNombreAfiliacionRP" id="inNombreAfiliacionRP" placeholder="Nombre Afiliación" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inRiesgoTrabajoRP">Riesgo de trabajo</label>
+            <input class="form-control form-control-sm" type="text" name="inRiesgoTrabajoRP" id="inRiesgoTrabajoRP" maxlength="10" placeholder="Riesgo de trabajo" required>
+          </div>
+          <div class="form-gruop col-md-6">
+            <div class="form-group">
+              <label for="inClase">Clase</label>
+              <select class="form-control custom-select custom-select-sm font-labels" id="inClase" required>
+              </select>
+              <div class="invalid-feedback">
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inEstLocalidad">Estado</label>
+            <select class="form-control custom-select custom-select-sm font-labels" name="inEstLocalidad" id="inEstLocalidad" required>
+              <option value="">Selecciona</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inEmpresaRP">Empresa</label>
+            <select class="form-control custom-select custom-select-sm font-labels" name="inEmpresaRP" id="inEmpresaRP" required>
+              <option value="">Selcciona</option>
+            </select>
+          </div>
+          <input type="hidden" value="" id="IdRegPat" />
+          <div class="form-group col-md-12">
+            <div class="d-flex ">
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" name="inStatusRP" id="inStatusRP">
+                <label class="custom-control-label" id="lblinStatusRP" for="inStatusRP">Cancelado</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <div class="btn btn-primary btn-sm btn-icon-split" id="btnGuardarRP">
+              <span class="icon"><i class="fas fa-save"></i></span>
+              <span class="text">Guardar </span>
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+            <div class="btn btn-warning btn-sm btn-icon-split invisible" id="btnClearRP">
+              <span class="icon"><i class="fas fa-trash"></i></span>
+              <span class="text">Limpiar</span>
+            </div>
+          </div>
+          <div class="form-group col-md-4">
+
+            <div class="btn btn-success btn-sm btn-icon-split invisible" id="btnUpdateRP">
+              <span class="icon"><i class="fas fa-edit"></i></span>
+              <span class="text">Actualizar</span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col">
+      <table class="table table-sm table-striped text-center" id="tabRegistrosPatronales">
+        <thead class="text-dark">
+          <tr>
+            <th>Afiliacion</th>
+            <th>Empresa</th>
+            <th>Clase</th>
+            <th>Riesgo de trabajo</th>
+            <th>Estado_id</th>
+            <th>Estado</th>
+            <th>Cancelado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+<script src="~/Scripts/main/Empre.js"></script>
+<script>
+  $(function () {
+    loadStates();
+  });
+</script>

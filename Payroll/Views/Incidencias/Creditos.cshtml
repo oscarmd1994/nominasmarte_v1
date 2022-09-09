@@ -1,0 +1,100 @@
+﻿<div class="container bg-white pb-3 rounded font-labels">
+  <div class="border-bottom border-secondary pt-4 pb-2 font-weight-bold d-flex justify-content-between"> <div>Creditos Infonavit del empleado : </div><strong class="font-button" id="EmpDes"></strong><div class="btn btn-info btn-sm font-labels" id="btn-cambiar-empleado" data-toggle="modal" data-target="#modalLiveSearchEmpleado" title="Cambia de usuario"><i class="fas fa-users"></i></div></div>
+  <div class="row">
+    <div class="col-md-12 rounded">
+      <form action="#" method="post" class="bg-light px-3 pt-3 row rounded" id="frmCreditos">
+        <div class="form-group col-md-4">
+          <label for="">Tipo de descuento</label>
+          <select class="form-control font-labels custom-select custom-select-sm" id="inTipoDescuento" name="inTipoDescuento" required>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label id="lblInDescuento" for="inDescuento"> Monto </label>
+          <input class="form-control form-control-sm " type="text" name="inDescuento" id="inDescuento" placeholder="Ingresa el descuento a aplicar" autocomplete="off" required />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inNoCredito">No de Crédito</label>
+          <input class="form-control  form-control-sm" type="text" name="inNoCredito" id="inNoCredito" placeholder="Ingresa el No de credito" maxlength="10" required />
+          <div class="invalid-feedback">
+            Tamaño minimo de 10 dígitos
+          </div>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inFechaAprovacionCredito">Fecha de aprobación</label>
+          <input type="date" name="inFechaAprovacionCredito" id="inFechaAprovacionCredito" class="form-control form-control-sm font-labels" required />
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inDescontar">Descontar</label>
+          <select class="form-control font-labels custom-select custom-select-sm" id="inDescontar" name="inDescontar" required>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="inFechaAusentismo">Fecha de baja del crédito</label>
+          <input type="date" name="inFechaBajaCredito" id="inFechaBajaCredito" value="" class="form-control form-control-sm font-labels" required />
+        </div>
+        <hr />
+        <div class="form-group col-md-4 text-right">
+          <div class="btn btn-sm btn-primary btn-priority font-labels col-md-12" id="btnSaveCredito">Registrar credito <i class="far fa-save"></i></div>
+        </div>
+        <div class="form-group col-md-4 text-right">
+          <div class="btn btn-sm btn-success btn-priority font-labels col-md-12" id="btnUpdateCredito">Actualizar credito <i class="fas fa-pencil-alt"></i></div>
+          <input type="hidden" id="inCredito_id" value="" />
+        </div>
+        <div class="form-group col-md-4 text-right">
+          <button type="reset" class="btn btn-sm btn-warning btn-priority font-labels col-md-12" id="btnResetFormCredito">Limpiar formulario <i class="fas fa-trash"></i></button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-12 mt-3">
+      <table class="table table-sm font-labels table-hover" id="tabCreditos">
+        <thead class="">
+          <tr>
+            <th scope="col">No Crédito</th>
+            <th scope="col">Tipo Descuento</th>
+            <th scope="col">Descuento</th>
+            <th scope="col">Descontar</th>
+            @*<th scope="col">Factor</th>*@
+            <th scope="col">Fecha Baja</th>
+            @*<th scope="col">Effdt</th>*@
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tcbody">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+@* MODAL DE LIVE SEARCH EMPLEADO *@
+<!-- Modal -->
+<div class="modal fade" id="modalLiveSearchEmpleado" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark font-weight-bold" id="staticBackdropLabel"> <i class="fas fa-search"></i> Buscar empleado <span id="politicas-modal-title" class="politicas-modal-title"></span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="search-box col-md-12">
+            <label for="inputSearchEmpleados" class="font-labels">Escribe el nombre del empleado que buscas</label>
+            <input type="text" name="inputSearchEmpleados" id="inputSearchEmpleados" placeholder="Escriba el nombre del empleado" class=" form-control" autocomplete="off" />
+            <div id="resultSearchEmpleados" name="resultSearchEmpleados" class="list-group"></div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-3 pb-3">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="~/Scripts/main/Creditos.js"></script>
+<script>
+  $(function () {
+    LoadSelectTipoDescuento();
+    LoadSelectDescontar();
+
+  });
+</script>

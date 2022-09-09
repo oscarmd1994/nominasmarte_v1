@@ -1,0 +1,387 @@
+﻿@*<link rel="stylesheet" href="~/Content/datatables-new/sb-admin-2.min.css" />*@
+<link rel="stylesheet" href="~/Content/datatables-new/stylesTables.css" />
+<link rel="stylesheet" href="~/Content/datatables-new/dataTables.bootstrap4.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<script type="text/javascript" src="~/Scripts/datatables-new/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="~/Scripts/datatables-new/dataTables.bootstrap4.min.js"></script>
+<link rel="stylesheet" href="~/Content/styles/animations.css?v=0.1" />
+
+<div class="container-fluid mb-5">
+  <div>
+    <button class="flotante-clear btn-circle btn btn-danger" title="Restablecer" id="btn-clear-params-reports">
+      <i class="fas fa-backspace"></i>
+    </button>
+    <button type="button" data-toggle="modal" data-target="#searchGroupBusiness" class="flotante0 btn btn-primary btn-circle shadow" title="Grupos de empresas" id="btn-modal-search-centr-cost">
+      <i class="fas fa-building"></i>
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-sm-10 offset-1">
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active font-navs" id="nav-reporte-tab" data-toggle="tab" href="#nav-reporte" role="tab" aria-controls="nav-reporte" aria-selected="true">
+            <i class="fas fa-book mr-2"></i> Reportes
+          </a>
+          <a class="nav-item nav-link font-navs" id="nav-catalogos-tab" data-toggle="tab" href="#nav-catalogos" role="tab" aria-controls="nav-catalogos" aria-selected="true">
+            <i class="fas fa-book mr-2"></i> Catalogos
+          </a>
+          <a title="Estamos trabajando en ello" class="nav-item nav-link font-navs disabled" id="nav-especiales-tab" data-toggle="tab" href="#nav-especiales" role="tab" aria-controls="nav-catalogos" aria-selected="true">
+            <i class="fas fa-book mr-2"></i> Especiales
+          </a>
+        </div>
+      </nav>
+      <div class="tab-content bg-white" id="nav-tabContent">
+        <div class="tab-pane fade show active p-3" id="nav-reporte" role="tabpanel" aria-labelledby="nav-reporte-tab">
+          <div class="tab-content" id="nav-tabContent1">
+            <div class="tab-pane fade show active p-3" id="nav-reporte" role="tabpanel" aria-labelledby="nav-reporte-tab">
+              <div class="row mt-2">
+                <div id="div-most-alert-data-reporte" class="col-md-6 offset-3"></div>
+                <div class="col-md-12 mb-4">
+                  <div class="text-left">
+                    <h6 class="col-ico font-navs">
+                      <b> <i class="fas fa-clipboard-check fa-sm mr-ico-05"></i> Completa los parametros </b>
+                    </h6>
+                    <hr />
+                  </div>
+                </div>
+                <div class="col-md-8 offset-2">
+                  <div class="form-group text-center rounded shadow p-3 border-left-primary border-right-primary">
+                    <label class="col-form-label" style="font-size: 14px;">
+                      <i class="fas fa-pallet mr-2 col-ico"></i>
+                      <b class="col-ico">Tipo periodo:</b> <span id="typeperactnomemp" class="font-weight-bold"></span>
+                    </label>
+                    <label class="col-form-label ml-2" style="font-size: 14px;">
+                      <i class="fas fa-pager mr-2 col-ico"></i>
+                      <b class="col-ico"> Periodo:</b> <span id="peractnomemp" class="font-weight-bold"></span>
+                    </label>
+                    <label class="col-form-label ml-2" style="font-size: 14px;">
+                      <i class="fas fa-calendar mr-2 col-ico"></i>
+                      <b class="col-ico">Fechas:</b> <span id="fechaspernomemp" class="font-weight-bold"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-10 offset-1">
+                  <div class="row shadow rounded p-3 border-left-primary border-right-primary">
+                    <div class="col-md-4 mt-3">
+                      <div class="form-group text-center">
+                        <label class="col-form-label font-labels col-ico">
+                          Generar reporte por:
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                      <div class="form-check text-center">
+                        <input class="" type="radio" name="optionReportGenerate" id="oneRadioBusiness" value="0">
+                        <label class="form-check-label font-labels col-ico" for="oneRadioBusiness">
+                          Empresa.
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                      <div class="form-check text-center">
+                        <input class="" type="radio" name="optionReportGenerate" id="groupRadioBusiness" value="1">
+                        <label class="form-check-label font-labels col-ico" for="groupRadioBusiness">
+                          Grupo de empresas.
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-5 offset-1">
+                      <div class="form-group">
+                        <label class="col-form-label font-labels col-ico" for="selectOneBusiness">
+                          Empresa
+                        </label>
+                        <select class="form-control form-control-sm" id="selectOneBusiness">
+                          <option value="none">Selecciona</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="form-group">
+                        <div class="form-group">
+                          <label class="col-form-label font-labels col-ico" for="selectGroupBusiness">
+                            Grupo de empresas
+                          </label>
+                          <select class="form-control form-control-sm" id="selectGroupBusiness">
+                            <option value="none">Selecciona</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mt-4 offset-1">
+                      <div class="form-group text-center">
+                        <label class="col-form-label font-labels col-ico"><i class="fas fa-file mr-2 col-ico"></i> Tipo de reporte</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mt-4">
+                      <div class="form-group">
+                        <select class="form-control form-control-sm" id="typeReportselect">
+                          <option value="0">Selecciona</option>
+                          <option value="ACUMATRIX">ACUMULADOS CRUZADOS</option>
+                          <option value="ACUM_NOM">ACUMULADOS POR NOMINA Y PERIODO</option>
+                          <option value="ALTAEMP">ALTAS EN EL PERIODO</option>
+                          <option value="AUMENFEC">AUMENTOS DE SUELDO POR RANGO DE FECHAS</option>
+                          <option value="ACUMSICOSS">ACUMULADOS (SIC)</option>
+                          <option value="ADEUDOS">ADEUDO RENGLONES (1052, 1060, 1162, 1542, 1885)</option>
+                          <option value="BAJA_FEC">BAJAS POR RANGO DE FECHAS</option>
+                          <option value="BAJACREDITOS">BAJA DE CREDITO INFONAVIT</option>
+                          <option value="PENSIONESALIM">CATALOGO DE PENSIONES ALIMENTICIAS</option>
+                          <option value="CATINFO">CREDITOS INFONAVIT ACTIVOS</option>
+                          <option value="CATINFO1">CREDITOS INFONAVIT HISTORICO</option>
+                          <option value="RECIRENG">DETALLE DE RENGLONES DE NOMINA POR EMPRESA (AÑO ACTUAL)</option>
+                          @*<option value="RECIRENG_">DETALLE DE RENGLONES DE NOMINA POR EMPRESA (AÑO ANTERIOR)</option>*@
+                          <option value="CAT_EMP_AC">EMPLEADOS ACTIVOS (CON SUELDO)</option>
+                          <option value="CATEMPACSS">EMPLEADOS ACTIVOS (SIN SUELDO)</option>
+                          <option value="ESTRUCTURA">ESTRUCTURA</option>
+                          <option value="PAGOEFECTIVO">EMPLEADOS TIPO PAGO 1 (EFECTIVO)</option>
+                          <option value="FALTASSIC">FALTAS (SIC)</option>
+                          <option value="GENEMPLOYES">GENERAL EMPLEADOS</option>
+                          <option value="HOJACALCULO">HOJA DE CALCULO</option>
+                          <option value="HOJACALCULOBAJAS">HOJA DE CALCULO BAJAS</option>
+                          <option value="INCAPACIDADESSIC">INCAPACIDADES (SIC)</option>
+                          <option value="INCAPACIDADESTCR">INCAPACIDADES (TCR)</option>
+                          <option value="MOVIMIENTOS">MOVIMIENTOS</option>
+                          <option value="ABONO">RELACION ABONOS A CUENTA CHEQUES DETALLE</option>
+                          <option value="ABOTOTAL">RELACION ABONOS A CUENTA CHEQUES TOTALES</option>
+                          <option value="RECINOMI">RECIBOS DE NOMINA</option>
+                          @*<option value="RECMATRIX">RECIBOS CRUZADOS</option>*@
+                          @*<option value="TOTACUMS">ACUMULADOS POR EMPRESA</option>*@
+                          <option value="VACACIONES">VACACIONES</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-10 mt-3 offset-1" id="contentParameters"></div>
+                <div class="col-md-6 mt-3 offset-3" id="contentBtnGenerate"></div>
+                <div class="col-md-8 mt-3 offset-2" id="contentGenerateRep"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade show p-3" id="nav-catalogos" role="tabpanel" aria-labelledby="nav-catalogos-tab">
+          <div class="tab-content" id="nav-tabContent2">
+            <div class="tab-pane fade show active p-3" id="nav-catalogos-1" role="tabpanel" aria-labelledby="nav-catalogos-tab">
+              <div class="row mt-2">
+                <div id="div-most-alert-data-reporte-catalogos" class="col-md-6 offset-3"></div>
+                <div class="col-md-12 mb-4">
+                  <div class="text-left">
+                    <h6 class="col-ico font-navs">
+                      <b> <i class="fas fa-clipboard-check fa-sm mr-ico-05"></i> Selecciona una opción </b>
+                    </h6>
+                    <hr />
+                  </div>
+                </div>
+                <div class="col-md-4 offset-2 mt-5">
+                  <div class="form-group">
+                    <label class="col-form-label col-ico font-labels" for="typeReportselectCatalogs"> <i class="fas fa-book mr-2 col-ico"></i> Catalogo</label>
+                    <select class="form-control form-control-sm" id="typeReportselectCatalogs">
+                      <option value="none">Selecciona</option>
+                      <option value="DEPARTAMENTOS">DEPARTAMENTOS</option>
+                      <option value="PUESTOS">PUESTOS</option>
+                      <option value="LOCALIDADES">LOCALIDADES</option>
+                      <option value="SUCURSALES">SUCURSALES</option>
+                      <option value="POSICIONES">POSICIONES</option>
+                      <option value="CENTROSCOSTO">CENTROS DE COSTO</option>
+                      <option value="REGIONALES">REGIONALES</option>
+                    </select>
+                  </div>
+                  <div class="form-group text-center mt-4">
+                    <button class="btn btn-sm btn-primary" id="btnGenerateReportCatalogs">
+                      <i class="fas fa-play mr-2"></i> Generar reporte
+                    </button>
+                  </div>
+                </div>
+                <div class="col-md-6 text-center">
+                  <img width="250" class="img-fluid" src="~/Content/img/undraw_Documents_re_isxv.svg" alt="Reports" id="img-reports" />
+                  <h6 class="text-center mt-3 text-primary font-weight-bold" id="title-gr"></h6>
+                </div>
+                <div class="col-md-6 mt-3 offset-3 mt-4" id="contentGenerateRepCatalogs">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade show p-3" id="nav-especiales" role="tabpanel" aria-labelledby="nav-especiales-tab">
+          <div class="tab-content" id="nav-tabContent3">
+            <div class="tab-pane fade show active p-3" id="nav-especiales-1" role="tabpanel" aria-labelledby="nav-especiales-tab">
+              <div class="row mt-2">
+                <div id="div-most-alert-data-reporte-especiales" class="col-md-6 offset-3"></div>
+                <div class="col-md-12 mb-4">
+                  <div class="text-left">
+                    <h6 class="col-ico font-navs">
+                      <b> <i class="fas fa-clipboard-check fa-sm mr-ico-05"></i> Selecciona una opción </b>
+                    </h6>
+                    <hr />
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="col-form-label col-form-label-sm" for="yearSearch">Año de buqueda</label>
+                    <div class="input-group">
+                      <input type="number" class="form-control" id="yearSearch">
+                      <div class="input-group-append" id="button-addon4">
+                        <button class="btn btn-primary btn-sm" type="button" id="btnYearSearch">
+                          <i class="fas fa-search mr-2"></i> Consultar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label col-form-label-sm" for="typePeriodSearch">Tipo de periodo:</label>
+                    <select class="form-control form-control-sm" id="typePeriodSearch">
+                      <option value="none">Selecciona</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label col-form-label-sm" for="periodSearch">Periodo:</label>
+                    <input type="number" class="form-control form-control-sm" id="periodSearch" />
+                  </div>
+                  <div class="form-group text-center">
+                    <button class="btn btn-sm btn-primary" type="button" id="btnGenerateReportSearch">
+                      <i class="fas fa-check-circle mr-2"></i> Generar reporte
+                    </button>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="accordion" id="accordionExample">
+                    @*<div class="card">
+                          <div class="card-header" id="headingOne">
+                              <h2 class="mb-0">
+                                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                      Empresas del Periodo Semanal
+                                  </button>
+                              </h2>
+                          </div>
+                          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                              <div class="card-body">
+                                  Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+                              </div>
+                          </div>
+                      </div>*@
+                    @*<div class="card">
+                          <div class="card-header" id="headingTwo">
+                              <h2 class="mb-0">
+                                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                      Empresas del Periodo Catorcenal
+                                  </button>
+                              </h2>
+                          </div>
+                          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                              <div class="card-body">
+                                  Some placeholder content for the second accordion panel. This panel is hidden by default.
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card">
+                          <div class="card-header" id="headingThree">
+                              <h2 class="mb-0">
+                                  <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                      Empresas del Periodo Quincenal
+                                  </button>
+                              </h2>
+                          </div>
+                          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                              <div class="card-body">
+                                  And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
+                              </div>
+                          </div>
+                      </div>*@
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VENTANA MODAL DE REGISTRO DE GRUPOS DE EMPRESAS -->
+<div class="modal fade bg-gradient" data-backdrop="static" data-keyboard="false" id="searchGroupBusiness" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable rounded" role="document">
+    <div class="modal-content border-left-primary">
+      <div class="modal-header">
+        <h5 class="modal-title" id="labelSGrpBusiness"> <i class="fas fa-building mr-2 col-ico"></i> Grupos de empresas </h5>
+        <button id="icoCloseSearchGroupBusiness" type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="table-responsive animated fadeIn">
+            <table class="table table-bordered" id="dataTable" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Nombre grupo</th>
+                  <th>Accion</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Nombre grupo</th>
+                  <th>Accion</th>
+                </tr>
+              </tfoot>
+              <tbody id="data-groupbusiness">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        @*<button type="button" class="btn btn-success btn-sm btn-icon-split">
+              <span class="icon text-white-50">
+                  <i class="fas fa-plus"></i>
+              </span>
+              <span class="text">Agregar nuevo</span>
+          </button>*@
+        <button type="button" data-dismiss="modal" class="btn btn-danger btn-sm btn-icon-split" id="btnCloseSearchGroupBusiness">
+          <span class="icon text-white-50">
+            <i class="fas fa-times"></i>
+          </span>
+          <span class="text">Cerrar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- VENTANA MODAL DE VISUALIZACION DE EMPRESAS POR GRUPO -->
+<div class="modal fade bg-gradient" data-backdrop="static" data-keyboard="false" id="viewBusinessGroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable rounded" role="document">
+    <div class="modal-content border-left-primary">
+      <div class="modal-header">
+        <h5 class="modal-title" id="labelVGrpBusiness"> <i class="fas fa-building mr-2 col-ico"></i> Empresas del grupo: <span id="nameBusinessGroup" class="badge badge-pill badge-info p-2"></span> </h5>
+        <button id="icoCloseBusinessGroup" type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row" id="containerBusinessGroup">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-success btn-sm btn-icon-split" id="btnDownloadReport">
+          <span class="icon text-white-50">
+            <i class="fas fa-download"></i>
+          </span>
+          <span class="text">Desscargar Reporte</span>
+        </a>
+        <button type="button" data-dismiss="modal" class="btn btn-danger btn-sm btn-icon-split" id="btnCloseBusinessGroup">
+          <span class="icon text-white-50">
+            <i class="fas fa-times"></i>
+          </span>
+          <span class="text">Cerrar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/main/Reportes/main.js?n=8.8.3" defer></script>
+<script type="text/javascript" src="~/Scripts/main/Reportes/catalogs.js?n=0.2" defer></script>
+<script type="text/javascript" src="~/Scripts/main/Reportes/especiales.js?n=0.3" defer></script>

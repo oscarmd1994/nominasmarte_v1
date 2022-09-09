@@ -1,0 +1,197 @@
+﻿<link rel="stylesheet" href="~/Scripts/jqxGrid/jqwidgets/styles/jqx.base.css" type="text/css" />
+<link rel="stylesheet" href="~/Scripts/jqxGrid/jqwidgets/styles/jqx.arctic.css" type="text/css" />
+<link rel="stylesheet" href="~/Scripts/jqxGrid/jqwidgets/styles/jqx.bootstrap.css" type="text/css" />
+
+<div class="container col-md-10 bg-white border-left-primary border-right-primary rounded shadow p-3">
+  <div id="div-most-alert-data-gen" class="col-md-10 offset-2"></div>
+  <div class="col-md-12">
+    <div class="row justify-content-between">
+      <h5 class="font-weight-bold text-dark my-auto">
+        <span class="pl-4 fas fa-file-invoice"></span> Ejecucion de nomina
+      </h5>
+      <div>
+        <button class="btn btn-sm btn-primary my-auto mx-1 font-button btn-icon-split" data-toggle="modal" id="btnFloGuardar" type="button" value="1">
+          <span class="icon"><i class="fas fa-save"></i></span>
+          <span class="text">GUARDAR</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="col-md-12">
+    <div class="">
+      <div>
+        <div class="row">
+          <div class="tab-pane fade show px-4 row table-responsive" id="navEjecucion" role="tabpanel">
+            <!-- pantalla de Ejecucion tab-->
+            <div class="row">
+              <div class="col-md-12"><div id="div-most-alert-data-gen" class="col-md-6 mx-auto"></div></div>
+              <!--FORMULARIO-->
+              <div class="col-lg-8">
+                <form id="frmEjecucion" class="row">
+                  <div class="form-group col-md-12 px-3">
+                    <label for="definicionSelect" class="col-form-label font-labels">
+                      <i class="fas fa-clipboard-list mr-2 bg-icon-menu"></i> Definiciones
+                    </label>
+                    <select id="definicionSelect" class="custom-select custom-select-sm text-dark"></select>
+                  </div>
+                  <div class="form-group col-md-3 px-3">
+                    <label for="anoeje" class="col-form-label font-labels">
+                      <i class="fas fa-calendar mr-2 bg-icon-menu"></i>Año:
+                    </label>
+                    <input placeholder="Año" type="text" id="TbAño" class="form-control form-control-sm" readonly />
+                  </div>
+                  <div class="form-group col-md-3 px-3">
+                    <label for="TipoperiodoEje" class="col-form-label font-labels">
+                      <i class="fas fa-pallet mr-2 bg-icon-menu"></i>Tipo de periodo:
+                    </label>
+                    <input placeholder="Tipo de periodo" type="text" id="TxbTipoPeriodo" class="form-control form-control-sm text-capitalize" readonly />
+                  </div>
+                  <div class="form-group col-md-6 px-3">
+                    <label for="PeridoEje" class="col-form-label font-labels">
+                      <i class="fas fa-pager mr-2 bg-icon-menu"></i>Periodo:
+                    </label>
+                    <select placeholder="Periodo" tp-select="PeridoEje" class="custom-select custom-select-sm" id="PeridoEje">
+                      <option value="0">Selecciona</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6 px-3">
+                    <label for="NombEmpre" class="col-form-label font-labels" id="NombEmpre" style="visibility:hidden">
+                      <i class="fas fa-building mr-2 col-ico"></i>Empresa:
+                    </label>
+                    <select placeholder="Empresa" tp-select="Empresa" class="form-control form-control-sm" id="EjeEmpresa" style="visibility:hidden">
+                      <option value="0">Selecciona</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6 px-3 font-labels">
+                    <label for="Empleados" class="col-form-label font-labels" id="Empleadoseje" style="visibility:hidden;">
+                      <i class="fas fa-user-circle mr-2 bg-icon-menu"></i>Empleados:
+                    </label>
+                    <div id='DropLitEmple' class=""></div>
+                    <div id="dialog">
+                      <div id="selectionlog" class="col-md-12"></div>
+                      <div id="checkedItemsLog" class="col-md-12"></div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!--FUNCIONALIDADES ESPECIALES-->
+              <div class="col-lg-4 px-4">
+                <div class="form-group px-3 col-lg-12 col-md-6">
+                  <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="CheckXEmpresa">
+                    <label class="custom-control-label" for="CheckXEmpresa" id="LaCheckXEmpresa">
+                      <i class="fas fa fa-building mr-2 bg-icon-menu"></i>Calculo por empresa
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group px-3 hidden col-lg-12 col-md-6">
+                  <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="CheckXempleado" style="visibility:hidden">
+                    <label class="custom-control-label" for="CheckXempleado" id="LaCheckXEmpleado" style="visibility:hidden">
+                      <i class="fa fa-address-card mr-2 bg-icon-menu"></i>Calculo por empleado
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group px-3 hidden">
+                  <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="CheckPeridoEspc">
+                    <label class="custom-control-label" for="CheckPeridoEspc" id="LaCheckPeridoEspc">
+                      <i class="fa fa-address-card mr-2 bg-icon-menu"></i>Periodo Especial
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group px-3 text-danger font-weight-bold">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ChekEnFirme">
+                    <label class="custom-control-label" for="ChekEnFirme">Correr Nomina en firme</label>
+                  </div>
+                </div>
+              </div>
+              <!--BOTONES EJECUTAR-->
+              <div class="col-md-12 text-right">
+                @*<button class="btn btn-sm btn-warning my-auto mx-1 font-button btn-icon-split" id="btnFloLimpiar" type="button" value="1">
+                    <span class="icon"><i class="fas fa-eraser"></i></span>
+                    <span class="text">LIMPIAR FORMULARIO</span>
+                  </button>*@
+                <button class="btn btn-sm btn-danger my-auto mx-1 font-button btn-icon-split" id="btnFloEjecutar" data-toggle="modal" type="button" btvisible="true" value="1">
+                  <span class="icon"><i class="fas fa-play"></i> </span>
+                  <span class="text">INICIAR CÁLCULO</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 mt-5 px-0">
+    <div class="bg-white p-3 rounded shadow">
+      <div class="row">
+        <div class="col-md-12 px-5">
+          <div class="row justify-content-between">
+            <h5 class="font-weight-bold text-dark">
+              <i class="fas fa-hourglass-half"></i> Monitor de Procesos
+            </h5>
+            <div class="d-flex align-middle">
+              <b class="my-auto">Se actualiza en:</b>
+              <span class="font-weight-bold my-auto mx-3" id="timer"></span>
+              <div id="btnActualizarMonitor" class="btn btn-success btn-icon-split my-auto btn-sm">
+                <span class="icon"><i class="fas fa-sync-alt"></i></span>
+                <span class="text">ACTUALIZAR</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group text-center rounded shadow-sm p-1">
+            <div id="tabContainer" class="col-md-12 d-block">
+              <div class="table-responsive text-nowrap font-labels" style="text-align:center">
+                <table id="TbProcesos" class="table table table-sm">
+                  <thead>
+                    <tr>
+                      <th># Tarea</th>
+                      <th>Definicion</th>
+                      <th>Usuario</th>
+                      <th>Inicio</th>
+                      <th>Final</th>
+                      <th>Validacion</th>
+                      <th>Estatus</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+            <div id="spinnerDiv" class="col-md-12 d-none">
+              <div class="d-flex justify-content-center">
+                <div class="spinner-border my-5 text-info" style="width: 3rem; height: 3rem;" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/Nomoper/Ejecucion.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqx-all.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxnotification.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxdropdownbutton.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxswitchbutton.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxloader.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxexpander.js"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxdata.js"></script>
+<script src="~/Scripts/jqxGrid/jqwidgets/jqxgrid.filter.js"></script>
+<script src="~/Scripts/jqxGrid/jqwidgets/jqxlistbox.js"></script>
+<script src="~/Scripts/jqxGrid/jqwidgets/jqxdropdownlist.js"></script>
+<script src="~/Scripts/jqxGrid/jqwidgets/jqxcheckbox.js"></script>
+<script src="~/Scripts/jqxGrid/jqwidgets/jqxtabs.js"></script>
+<script src="~/Scripts/jqxGrid/jqwidgets/jqxgrid.sort.js"></script>
+<script src="~/Scripts/jqxGrid/jqwidgets/jqxpanel.js"></script>
+<script src="~/Scripts/jqxGrid/jqwidgets/globalization/globalize.js"></script>
+<script src="~/Scripts/jqxGrid/jqwidgets/jqxexpander.js"></script>

@@ -1,0 +1,36 @@
+﻿/* Diseño de color para el menu principal*/
+.btn-menu {
+    color: #fff;
+    background-color: #3949ab;
+    border-color: #6f74dd;
+}
+
+.btn-menu:focus,
+.btn-primary.focus {
+    color: #fff;
+    background-color: #5c6bc0;
+    border-color: #8e99f3;
+}
+
+.btn-menu:hover {
+    color: #fff;
+    background-color: #5c6bc0;
+    border-color: #8e99f3;
+}
+.cd:hover {
+    color:#fff;
+}
+.bg-cat-cards {
+    background-color: #A574F5 !important;
+    color: white !important;
+    border-color: rebeccapurple !important;
+}
+.bg-cat-cards-hover {
+    background-color: #8C4CF5 !important;
+    color: white !important;
+    border-color: purple !important;
+}
+.font-small{
+    font-size:small !important;
+}
+

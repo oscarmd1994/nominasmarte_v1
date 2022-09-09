@@ -1,0 +1,180 @@
+﻿<div class="container col-md-10 bg-white shadow shadow-lg p-4 rounded border-left-primary border-right-primary">
+    <div class="col-md-12  m-auto rounded">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item " role="presentation">
+          <a class="nav-link active col-md-12" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+            <i class="fas fa-users"></i> Usuarios
+          </a>
+        </li>
+        <li class="nav-item " role="presentation">
+          <a class="nav-link  col-md-12" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">
+            <i class="fas fa-user-shield"></i> Perfiles
+          </a>
+        </li>
+        @*<li class="nav-item " role="presentation">
+          <a class="nav-link  col-md-12" id="profile-empresas-tab" data-toggle="tab" href="#profile-empresas" role="tab" aria-controls="profile-empresas" aria-selected="false">
+            <i class="fas fa-user-shield"></i> 
+          </a>
+        </li>*@
+      </ul>
+        <div class="tab-content rounded font-labels" id="myTabContent">
+            <div class="tab-pane fade pt-3 show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div class="col-md-12 d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary btn-icon-split font-label my-3" data-toggle="modal" data-target="#newUserModal">
+                        <span class="icon"><i class="fas fa-plus"></i></span>
+                        <span class="text">Agregar usuario</span>
+                    </button>
+                </div>
+                <table class="table table-sm my-4" id="tabUsers">
+                    <thead>
+                        <tr>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Perfil Id</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Activo</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabusersbody">
+                    </tbody>
+                </table>
+                <div class="col-md-12 mt-3 collapse" id="collapseUsers"></div>
+            </div>
+
+            <div class="tab-pane fade mb-4 pt-3" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="col-md-12 d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary btn-icon-split font-label my-3" data-toggle="modal" data-target="#newProfileModal">
+                        <span class="icon"><i class="fas fa-plus"></i></span>
+                        <span class="text">Agregar perfil</span>
+                    </button>
+                </div>
+                <table class="table table-sm my-4" id="tabProfiles">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Perfil</th>
+                            <th>Fecha de alta</th>
+                            @*<th>Activo</th>*@
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabprofilesbody">
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Modal New user-->
+<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="examplenewUserModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header nav-backcolor">
+                <h5 class="modal-title text-white text-center col" id="examplenewUserModal"> Agregar nuevo usuario</h5>
+                <button type="button" class="close border-0" data-dismiss="modal" aria-label="Close">
+                    <span class="text-white" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="frmNewUser" class="col-md-12 row px-3 text-dark">
+                    <div class="form-group col-md-12 mx-0 mx-3">
+                        <label for="perfil">Nombre completo</label>
+                        <input type="text" class="form-control text-uppercase" id="innombre" name="innombre" required>
+                    </div>
+                    <div class="form-group col-md-12 mx-0 mx-3">
+                        <label for="inuser">Usuario</label>
+                        <input type="text" class="form-control" id="inuser" name="inuser" required>
+                    </div>
+                    <div class="form-group col-md-12 mx-0 mx-3">
+                        <label for="inpass1">Contraseña</label>
+                        <input type="text" class="form-control" id="inpass1" name="inpass1" required>
+                    </div>
+                    <div class="form-group col-md-12 mx-0 mx-3">
+                        <label for="inpass2">Confirma contraseña</label>
+                        <input type="text" class="form-control" id="inpass2" name="inpass2" required>
+                    </div>
+                    <div class="form-group col-md-12 mx-0 mx-3">
+                        <label for="inuserperfilid">Perfil</label>
+                        <select class="form-control" id="inuserperfilid" name="inuserperfilid" required>
+                            <option>Small select</option>
+                        </select>
+                    </div>
+                    <div class="form-group mx-0 col-md-12 mx-3">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="inestatus" name="inestatus" checked>
+                            <label class="custom-control-label" for="inestatus">Activo</label>
+                        </div>
+                    </div>
+                    <div class="form-group mx-0 col-md-12 mx-3">
+                        <div class="custom-control custom-switch col">
+                            <input type="checkbox" class="custom-control-input" id="inconsulta" name="inconsulta">
+                            <label class="custom-control-label" for="inconsulta">Usuario de consulta</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer col-md-12 text-center">
+                        <button type="button" class="btn btn-secondary btn-sm btn-icon-split" data-dismiss="modal">
+                            <span class="icon"><i class="fas fa-times"></i></span>
+                            <span class="text">Cerrar</span>
+                        </button>
+                        <button type="button" id="btnsavenewuser" class="btn btn-primary btn-sm btn-icon-split">
+                            <span class="icon"><i class="fas fa-save"></i></span>
+                            <span class="text">Guardar</span>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal New profile-->
+<div class="modal fade" id="newProfileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> Menús que manejara el perfil </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="frmProfiles" class="col-md-12 row">
+                    <div class="form-group col-md-6 mx-0 pr-3">
+                        <label for="perfil">Perfil</label>
+                        <input type="text" class="form-control" id="perfil" name="perfil">
+                    </div>
+                    <div class="form-group col-md-6 mx-0 pr-3">
+                        <label for="perfil">Perfil</label>
+                        <input type="text" class="form-control" id="perfil" name="perfil">
+                    </div>
+                    <div class="col-md-12 row m-0 p-0" id="formbodyprofiles">
+
+
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm btn-icon-split" data-dismiss="modal">
+                        <span class="icon"><i class="fas fa-times"></i></span>
+                        <span class="text">Cerrar</span>
+                    </button>
+                    <button type="button" id="btnnewperfil" onclick="carganewperfil();" class="btn btn-primary btn-sm btn-icon-split">
+                        <span class="icon"><i class="fas fa-save"></i></span>
+                        <span class="text">Guardar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/Catalogos/Usuarios.js?n=0.4"></script>
+<script>
+    $(function () {
+        loadtabusers();
+        loadtabprofiles();
+        loadmainchecks();
+        loadselectprofiles();
+    });
+</script>

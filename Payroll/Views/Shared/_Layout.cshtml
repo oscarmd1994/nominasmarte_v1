@@ -1,0 +1,401 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="expires" content="-1" />
+  <title> Nominas Marte </title>
+  <link rel="icon" type="image/png" href="~/Content/MDB/mars2.png" />
+  <link rel="stylesheet" href="~/Content/jquery-ui.css">
+  <link href="~/Content/MDB/bootstrap.css" rel="stylesheet" />
+  <link href="~/Content/MDB/mdb.css" rel="stylesheet" />
+  <link href="~/Content/MDB/style.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="~/Content/styles/main.css" />
+  <link rel="stylesheet" href="~/Content/animate/animate.css" />
+
+  <link href="~/Content/styles/home.css" rel="stylesheet" />
+
+
+  <!-- ESTILOS CSS NUEVOS -->
+  <link rel="stylesheet" href="~/Content/datatables-new/stylesTables.css" />
+  <link rel="stylesheet" href="~/Content/datatables-new/sb-admin-2.min.css" />
+  <link rel="stylesheet" href="~/Content/datatables-new/dataTables.bootstrap4.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <script type="text/javascript" src="~/Content/MDB/jquery.js"></script>
+  <script type="text/javascript" src="~/Content/MDB/popper.js"></script>
+
+  <script type="text/javascript" src="~/Scripts/jquery-ui.js" charset="UTF-8"></script>
+  <script type="text/javascript" src="~/Content/MDB/bootstrap.js"></script>
+  <script type="text/javascript" src="~/Content/MDB/mdb.js"></script>
+</head>
+
+<body class="fixed-sn black-skin" id="body-init">
+  <header>
+    <div id="slide-out" class="side-nav sn-bg-3 mdb-color darken-4 fixed">
+      <ul class="overflow-auto">
+        <li class="">
+          <div class="waves-light">
+            <div class="w-100 bg-logo rounded-top py-2">
+              <div class="col-md-12 text-center">
+                <img class="py-1" width="60" src="~/Content/MDB/mars2.png" alt="logo">
+              </div>
+              <div class="col-md-7 mx-auto logo-font text-center h1">
+                <div class="row">
+                  <div class="col-md-12 text-white">marte</div>
+                </div>
+              </div>
+              <div class="col-md-12 text-center h6">Sistema de nomina</div>
+            </div>
+          </div>
+        </li>
+        <li class="pb-4">
+          <ul class="accordion collapsible collapsible-accordion NavMenu" id="sidenavMenu"></ul>
+        </li>
+        <li class="bg-dark font-weight-bold fixed-bottom text-center font-labels">
+          Version 1.6.2
+        </li>
+      </ul>
+      <div class="sidenav-bg mask-strong"></div>
+    </div>
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-xl scrolling-navbar double-nav mdb-color darken-4">
+      <div class="float-left">
+        <a href="#" data-activates="slide-out" class="button-collapse black-text">
+          <i class="fas fa-bars text-white"></i>
+        </a>
+      </div>
+      <div class="breadcrumb-dn"></div>
+      <ul class="nav navbar-nav nav-flex-icons mx-auto">
+        <li class="nav-item">
+          <a class="nav-link">
+            <i class="fas fa-user"></i>
+            <span class="clearfix d-none d-sm-inline-block">@Session["sUsuario"]</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <i class="fas fa-city"></i>
+            <span class="clearfix d-none d-sm-inline-block" id="btnNameEmpresaSelected"></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <i class="fas fa-factory"></i>
+            <span class="clearfix d-none d-sm-inline-block" id="btnGrupoEmpName"></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <div class="btn btn-sm mx-2 btn-outline-light" id="btn-cambiar-empresas" title="Cambiar empresa">
+            <i class="fas fa-exchange-alt"></i>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link form-inline mx-2">
+            <div class="row pt-1">
+              <i class="fas fa-calendar-check text-white mr-ico-05"></i>
+              <div class="text-white font-menu-prin">&nbsp;Periodo&nbsp;:&nbsp;&nbsp;</div>
+              <div class="text-white font-menu-prin" id="lblPeriodoId">@Session["Periodo_id"]</div>
+              <div class="text-white small font-menu-prin my-0" id="lblRangoPeriodo">@Session["Rango_periodo"]</div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="ml-0">
+        <a href="../Login/Logout" class="btn btn-outline-light btn-sm">
+          Salir <i class="fas fa-sign-out-alt ml-ico-05"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container-fluid text-center" id="">
+      <div id="bodySubmenus" class="pb-5">
+        @RenderBody()
+      </div>
+    </div>
+  </main>
+  <footer class="page-footer fixed-bottom text-center text-center mdb-color darken-4 col-md-12 py-1 my-0">
+    <p class="title-font font-size-footer py-0 my-0"><i class="fas fa-copyright py-0"></i> @DateTime.Now.Year - <a class="" style="color:#ff0000;" href="#">marte</a> - Todos los derechos reservados. <br /></p>
+    @*<p class="title-font font-size-footer py-0 my-0"><i class="fas fa-copyright py-0"></i> @DateTime.Now.Year - <a class="" style="color:#ff0000;" href="#">www.marte.com.mx</a> Todos los derechos reservados. <br /></p>*@
+  </footer>
+
+  <div class="modal fade" id="modalBtns" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+      <div class="modal-content indigo lighten-5">
+        <div class="modal-header mdb-color darken-4">
+          <h4 class="modal-title text-white"> <i class="fas fa-city"></i> Selecciona la empresa</h4>
+
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body row bg-white">
+          <div class="col-md-12" id="mbody"></div>
+        </div>
+        <div class="modal-footer mdb-color darken-4">
+          <samll class=" text-light font-italic">*Es necesario elegir una empresa para iniciar</samll>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="~/Scripts/fontawesome/fontawesome.js"></script>
+  <script type="text/javascript" src="~/Scripts/sweetalert/sweetalert.min.js"></script>
+  <script type="text/javascript" src="~/Scripts/datatables/datatables.min.js"></script>
+  <script type="text/javascript" src="~/Scripts/datepicker.es.js" charset="UTF-8"></script>
+  <script type="text/javascript" src="~/Scripts/toastr/toastr.min.js"></script>
+
+  <script src="~/Scripts/jqxGrid/jqwidgets/jqx-all.js"></script>
+  <script src="~/Scripts/jqxGrid/jqwidgets/jqxcore.js"></script>
+  <script src="~/Scripts/jqxGrid/jqwidgets/jqxdata.js"></script>
+  <script src="~/Scripts/jqxGrid/jqwidgets/jqxbuttons.js"></script>
+  <script src="~/Scripts/jqxGrid/jqwidgets/jqxscrollbar.js"></script>
+  <script src="~/Scripts/jqxGrid/jqwidgets/jqxmenu.js"></script>
+  <script src="~/Scripts/jqxGrid/jqwidgets/jqxgrid.selection.js"></script>
+  <script src="~/Scripts/jqxGrid/jqwidgets/jqxgrid.filter.js"></script>
+  <script src="~/Scripts/jqxGrid/jqwidgets/jqxlistbox.js"></script>
+  <script src="~/Scripts/jqxGrid/jqwidgets/jqxdropdownlist.js"></script>
+  <script src="~/Scripts/jqxGrid/jqwidgets/jqxcheckbox.js"></script>
+  <script src="~/Scripts/jqxGrid/jqwidgets/jqxwindow.js"></script>
+  <!--Estilos datatables nuevos-->
+  <script type="text/javascript" src="~/Scripts/datatables-new/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="~/Scripts/datatables-new/dataTables.bootstrap4.min.js"></script>
+
+
+  <script>
+
+    $(document).ready(function () {
+
+      // SideNav Initialization
+      $(".button-collapse").sideNav();
+      new WOW().init();
+      /*$("#bodySubmenus").load("/Home/About");*/
+
+
+      getProfileType = () => {
+        $.ajax({
+          url: "../Empresas/getProfileType",
+          type: "POST",
+          contentType: "application/json; charset=utf-8",
+          success: (data) => {
+            $("#renderbody").html(data);
+          }
+        });
+      }
+
+      seeview = (data) => {
+        $("#bodySubmenus").empty();
+        let timerInterval
+        Swal.fire({
+          title: 'Cargando...',
+          html: 'Un segundo por favor!',
+          timer: 2500,
+          timerProgressBar: true,
+          onBeforeOpen: () => {
+            $("#bodySubmenus").load(data);
+            Swal.showLoading();
+            setTimeout(function () {
+              getProfileType();
+            }, 1500);
+          }
+        });
+      }
+
+      //change = () => {
+      //    $("#bodySubmenus").empty();
+      //}
+
+      btnsEmpresas = (id, nombre) => {
+
+        $.ajax({
+          url: "../Empresas/DefineEmpresa",
+          type: "POST",
+          data: JSON.stringify({ IdEmpresa: id, NombreEmpresa: nombre }),
+          contentType: "application/json; charset=utf-8",
+          success: (data) => {
+            loadgroupinfo(id);
+
+            if (data[0] != "0") {
+              $.ajax({
+                url: "../Empresas/DefinePeriodoActual",
+                type: "POST",
+                data: JSON.stringify({
+                  IdPeriodo: data[4],
+                  Fecha_inicio: data[6],
+                  Fecha_fin: data[7]
+                }),
+                contentType: "application/json; charset=utf-8",
+                success: (dat) => {
+                  document.getElementById("btnNameEmpresaSelected").innerHTML = id + " " + nombre;
+                  document.getElementById("lblPeriodoId").innerHTML = data[4];
+                  document.getElementById("lblRangoPeriodo").innerHTML = "&nbsp;&nbsp;-&nbsp;&nbsp;" + data[6] + " - " + data[7];
+                  //$("#bodySubmenus").empty();
+                  $("#modalBtns").modal('hide');
+                }
+              });
+            } else {
+              document.getElementById("btnNameEmpresaSelected").innerHTML = id + " " + nombre;
+              document.getElementById("lblPeriodoId").innerHTML = "Sin Periodo";
+              $("#bodySubmenus").empty();
+              $("#modalBtns").modal('hide');
+              Swal.fire({
+                icon: 'warning',
+                confirmButtonText: "Aceptar",
+                html: '<h1 class="text-danger font-weight-bold col-md-12">Aviso!</h1><p class="font-weight-bold">La empresa no tiene periodos abiertos<br><small class="text-justify text-muted">*Para poder trabajar de manera normal en todos los modulos genere mas periodos e ingrese nuevamente al sistema</small><small class="text-justify text-muted"></small></p>'
+              });
+            }
+          }
+        });
+      }
+
+      $("#modalBtns").modal({
+        keyboard: false,
+        backdrop: "static",
+        focus: true
+      });
+
+      $("#btn-cambiar-empresas").on("click", function () {
+        loadBtnsEmpresas();
+        $("#modalBtns").modal({
+          keyboard: false,
+          backdrop: "static",
+          focus: true
+        });
+      });
+
+      MostrarBtnsEmpresa = (idE) => {
+        var txtIdEmpresa = { "IdEmpresa": idE };
+        $.ajax({
+          url: "../Empresas/SearchEmpresas",
+          type: "POST",
+          data: JSON.stringify(txtIdEmpresa),
+          dataType: "json",
+          contentType: "application/json; charset=utf-8",
+          success: (data) => {
+            var idEmp;
+            $("#resultSearchEmpleados").empty();
+            for (var i = 0; i < data.length; i++) {
+              $("#nomEmp").empty(); $("#nomEmp").append(data[i]["NombreEmpleado"] + " " + data[i]["ApellidosEmpleado"]);
+              $("#puesto_emp").empty(); $("#puesto_emp").append(data[i]["Puesto"]);
+              $("#antig_emp").empty(); $("#antig_emp").append(data[i]["FechaIngreso"].substring(0, 10));
+              $("#vacacionesCollapse").collapse("show");
+              idEmp = data[i]["IdEmpleado"];
+            }
+            CargarTabPeriodos(data[0].IdEmpleado);
+            document.getElementById("inputSearchEmpleados").value = '';
+          }
+        });
+      }
+
+      loadBtnsEmpresas = () => {
+
+        $.ajax({
+          url: "../Empresas/LoadEmpresas",
+          type: "POST",
+          data: {},
+          contentType: "application/json; charset=utf-8",
+          success: (data) => {
+            $("#mbody").html(data);
+          }
+        });
+
+      }
+
+      loadBtnsEmpresas();
+
+      $("#modalBtns").modal('show');
+
+      loadgroupinfo = (Empresa_id) => {
+        $.ajax({
+          url: "../Empresas/GrupoEmpInfo",
+          type: "POST",
+          data: JSON.stringify({ Empresa_id: Empresa_id }),
+          contentType: "application/json; charset=utf-8",
+          success: (data) => {
+            document.getElementById("btnGrupoEmpName").innerHTML = data[0] + "&nbsp;&nbsp;" + data[1];
+          }
+        });
+      }
+
+      getEmpresasByProfile = (clase, grupo_id) => {
+        $.ajax({
+          url: "../Empresas/LoadEmpresasByGrupo",
+          type: "POST",
+          //data: JSON.stringify({ Grupo_id: Grupo_id }),
+          contentType: "application/json; charset=utf-8",
+          success: (data) => {
+            var list = "";
+            for (var i = 0; i < data.length; i++) {
+              if (data[i]["GrupoEmpresa_Id"] == grupo_id) {
+                list += "" +
+                  "<div class='btn btn-outline-btns col-6 col-md-4 col-xl-3 my-1 mx-0' onclick='btnsEmpresas(\"" + data[i].Empresa_id + "\",\"" + data[i].NombreEmpresa + "\")'>" +
+                  "<div class='row align-items-center'>" +
+                  "<div class='col-8 btnli text-left py-0'>" +
+                  "<div class='col-md-12 font-weight-bold p-0' style='font-size: .8rem;'>" + data[i].NombreEmpresa + "</div>" +
+                  "<hr class='p-0 m-0 bg-white'>" +
+                  "<div class='col-md-12 p-0' style='font-size: .8rem;'>" + data[i].Tipo_Periodo + "</div>" +
+                  "</div>" +
+                  "<div class='col-4 m-0 p-0'>" +
+                  "<span class='text-center font-weight-bold'>" + data[i].Empresa_id + "</span>" +
+                  "</div>" +
+                  "</div>" +
+                  "</div>";
+              } else {
+
+              }
+            }
+            $("#" + clase).html(list);
+            $(".collapse").collapse("hide");
+            $(".contentCollapse").removeClass("col-md-12").addClass("col-md-6");
+            $("#cont" + clase).addClass("col-md-12");
+            $("#" + clase).collapse("show");
+          }
+        });
+      }
+
+    });
+  </script>
+  <script src="~/Scripts/main/startMenu.js"></script>
+  <script src="~/Scripts/main/Empresas.js"></script>
+  <script type="text/javascript">
+
+    var idleTime = 0; $(document).ready(function () {
+      //Increment the idle time counter every minute.
+      var idleInterval = setInterval(timerIncrement, 60000);
+      // 1 minute
+
+      //Zero the idle timer on mouse movement.
+      $(this).mousemove(function () {
+        idleTime = 0;
+      });
+
+      $(this).keypress(function () {
+        idleTime = 0;
+      });
+    });
+
+    timerIncrement = () => {
+      idleTime = idleTime + 1;
+      if (idleTime == 120) { // 2 horas
+        Swal.fire({
+          title: 'Tu sesión a terminado!',
+          text: "Tienes que iniciar nuevamente.",
+          icon: 'warning',
+          confirmButtonColor: '#3085d6',
+          backdrop: true,
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Aceptar'
+        }).then((result) => {
+          if (result.value) {
+            window.location.href = "../Login/Logout";
+          }
+        });
+      }
+    }
+  </script>
+</body>
+</html>

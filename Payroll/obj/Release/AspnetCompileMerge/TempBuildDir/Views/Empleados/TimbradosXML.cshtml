@@ -1,0 +1,102 @@
+﻿
+
+<link rel="stylesheet" href="~/Scripts/jqxGrid/jqwidgets/styles/jqx.base.css" />
+
+<div class="container bg-white">
+    @*Botones Flotantes*@
+    <div style="margin-right">
+        <button class="flotante1  btn btn-primary btn-circle shadow" title="Buscar" id="btnFloLimpiar" type="button" data-toggle="modal">
+            <i class="fas fa-eraser"></i>
+        </button>
+    </div>
+    <div class="container-fluid">
+
+        <div class="row mt-4 border-left-primary p-3 rounded shadow border-right-primary">
+            <div id="div-most-alert-data-gen" class="col-md-10 offset-2"></div>
+            <div class="col-md-6">
+                <div class="text-left">
+                    <h6 class="col-ico font-nav-child">
+                        <b>
+                            <i class="fas fa-circle fa-sm mr-ico-05"></i>
+                            Tibrados desde XML
+                        </b>
+                    </h6>
+                </div>
+
+            </div>
+            <div class="col-md-12">
+                <hr />
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row" style="margin-left:2%">
+               
+
+                </div>
+                <div class="form-group row" style="margin-left:2%">
+                    <label for="anoxml" class="col-sm-3 col-form-label font-labels">
+                        <i class="fas fa-calendar mr-2 col-ico"></i>
+                        Año:
+                    </label>
+                    <div class="col-sm-4">
+                        <input placeholder="Año" maxlength="4" tvvisible="false" type="text" id="anoxml" class="form-control form-control-sm text-capitalize" />
+                    </div>
+                </div>
+                <div class="form-group row" style="margin-left:2%">
+                    <label for="TipoPeriodo" class="col-sm-3 col-form-label font-labels">
+                        <i class="fas fa-pallet mr-2 col-ico"></i>
+                        Tipo de periodo:
+                    </label>
+                    <div class="col-sm-4">
+                        <input placeholder="Tipo de periodo" maxlength="2" tvvisible="false" type="text" id="TipoPeriodoxml" class="form-control form-control-sm text-capitalize" />
+                    </div>
+                </div>
+                <div class="form-group row" style="margin-left:2%">
+                    <label for="TipoPeriodo" class="col-sm-3 col-form-label font-labels">
+                        <i class="fas fa-pager mr-2 col-ico"></i>
+                        Periodo:
+                    </label>
+                    <div class="col-sm-4">
+                        <input placeholder="Periodo" maxlength="2" tvvisible="false" type="text" id="Periodoxml" class="form-control form-control-sm text-capitalize" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                @*<div class="form-group row col-md-8">
+                    <label for="ReciboTim" class="col-sm-4 col-form-label font-labels">
+                      <i class="fas fa-file-invoice-dollar mr-2 col-ico"></i>Recibo:</label>
+                     <div class="col-sm-8">
+                        <select placeholder="Recibo" tp-select="ReciboTim" class="form-control form-control-sm" id="ReciboTim">
+                            <option value="0">Selecciona</option>
+                            <option value="1">Recibo 1 Asimilado</option>
+                            <option value="2">Recibo 2 Asimilado</option>
+                            <option value="3">Aguinaldo</option>
+                            <option value="5">Transporte </option>
+                        </select>
+                    </div>
+                </div>*@
+
+
+                <div class="form-group row col-md-8">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="fileUpload" lang="en">
+                        <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                    </div>
+                </div>
+                <div class="form-group row col-md-9" style="margin-left:20%">
+                    <button type="submit" class="btn btn-primary mb-2 btn-priority" id="btnTiembrar"><span class="fa fa-arrow-circle-o-up"></span> Generar recibo timbrado </button>
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <center>
+
+                    <div id="jqxLoader2"></div>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/main/Timbradosxml.js?n=6"></script>
+<script type="text/javascript" src="~/Scripts/jqxGrid/jqwidgets/jqxloader4.js?n=2"></script>

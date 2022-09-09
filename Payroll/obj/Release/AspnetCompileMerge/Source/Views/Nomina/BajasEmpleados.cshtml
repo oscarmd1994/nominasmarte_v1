@@ -1,0 +1,628 @@
+﻿
+<div class="container-fluid mb-5">
+    <div>
+
+        <button btn-data-read type="button" data-toggle="modal" data-target="#modalLiveSearchEmpleado" class="flotante0 btn btn-primary btn-circle shadow" title="Buscar empleado" id="btn-modal-search-employee-down">
+            <i class="fas fa-users"></i>
+        </button>
+
+        <button btn-data-read  type="button" class="flotante1 btn btn-warning btn-circle shadow" title="Buscar empleado" id="btn-modal-search-changes-incidences">
+            <i class="fas fa-book"></i>
+        </button>
+
+    </div>
+    <div class="row">
+        <div class="col-md-10 offset-1">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active font-navs" id="navDownsTab" data-toggle="tab" href="#nav-bajas" role="tab" aria-controls="nav-datagen" aria-selected="true">
+                        <i class="fas fa-user-times col-ico mr-ico-05"></i> Bajas
+                    </a>
+                    <a class="nav-item nav-link font-navs" id="navReactiveTab" data-toggle="tab" href="#nav-redoc" role="tab" aria-controls="nav-imss" aria-selected="false">
+                        <i class="fas fa-user-check col-ico mr-ico-05"></i> Reactivar empleados
+                    </a>
+                    <a class="nav-item nav-link font-navs" id="navDownsMassiveab" data-toggle="tab" href="#nav-bmasivas" role="tab" aria-controls="nav-estructure" aria-selected="false">
+                        <i class="fas fa-project-diagram col-ico mr-ico-05"></i> Bajas Masivas
+                    </a>
+                    <a class="nav-item nav-link font-navs disabled" id="navDownsSettlementMassive" data-toggle="tab" href="#nav-finiquitos" role="tab" aria-controls="nav-finiquitos" aria-selected="false">
+                        <i class="fas fa-file-alt col-ico mr-ico-05"></i> Finiquitos Masivos (Esta opción se encuentra desactivada temporalmente)
+                    </a>
+                </div>
+            </nav>
+            <div class="tab-content bg-white">
+                <div class="tab-pane fade show active p-3" id="nav-bajas" role="tabpanel" aria-labelledby="nav-bajas-tab">
+                    <div class="tab-content" id="nav-tabContent1">
+                        <div class="tab-pane fade show active p-3" id="nav-bajas" role="tabpanel" aria-labelledby="nav-reporte-tab">
+                            <div class="row mt-2">
+                                <div id="div-most-alert-data-bajas" class="col-md-6 offset-3"></div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="text-left">
+                                        <h6 class="col-ico font-navs">
+                                            <b> <i class="fas fa-clipboard-check fa-sm mr-ico-05"></i> Completa los parametros </b>
+                                        </h6>
+                                        <hr />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4 d-none shadow rounded border-left-primary border-right-primary p-3" id="info-employee">
+                                <div class="col-md-6">
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span style="font-size:14px;"><i class="fas fa-id-badge mr-1 col-ico"></i> Nomina</span>
+                                            <span style="font-size:11px;" class="badge bg-light text-primary font-weight-bold p-2" id="id_emp"></span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span style="font-size:14px;"><i class="fas fa-calendar mr-1 col-ico"></i> Ultimo aumento</span>
+                                            <span style="font-size:11px;" class="badge bg-light text-primary font-weight-bold p-2" id="aumento_emp"></span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span style="font-size:14px;"><i class="fas fa-calendar mr-1 col-ico"></i> Fecha antiguedad</span>
+                                            <span style="font-size:11px;" class="badge bg-light text-primary font-weight-bold p-2" id="antiguedad_emp"></span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span style="font-size:14px;"><i class="fas fa-calendar mr-1 col-ico"></i> Fecha ingreso</span>
+                                            <span style="font-size:11px;" class="badge bg-light text-primary font-weight-bold p-2" id="ingreso_emp"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span style="font-size:14px;"><i class="fas fa-money-check-alt mr-1 col-ico"></i> Sueldo mensual</span>
+                                            <span style="font-size:11px;" class="badge bg-light text-primary font-weight-bold p-2" id="sueldo_emp"></span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span style="font-size:14px;"><i class="fas fa-user-tie mr-1 col-ico"></i> Nivel empleado</span>
+                                            <span style="font-size:11px;" class="badge bg-light text-primary font-weight-bold p-2" id="nivel_emp"></span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span style="font-size:14px;"><i class="fas fa-building mr-1 col-ico"></i> Plaza & nb</span>
+                                            <span style="font-size:11px;" class="badge bg-light text-primary font-weight-bold p-2" id="posicion_emp"></span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <span style="font-size:14px;"><i class="fas fa-folder mr-1 col-ico"></i> Finiquitos </span>
+                                            <span class="badge bg-gradient-primary text-white font-weight-bold p-2" id="btnShowWindowDataDonw">
+                                                <a href="#" data-toggle="modal" data-target="#window-data-down" class="text-white">Ver registros</a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="frmbajas" class="shadow rounded border-left-primary border-right-primary p-3 row">
+                                <div class="col-md-10 offset-1 mb-4" id="alertSelectEmployee">
+                                    <div class="alert alert-info alert-dismissible fade show shadow rounded text-center" role="alert">
+                                        <strong> Selecciona un empleado para comenzar el proceso! </strong>
+                                    </div>
+                                </div>
+                                @*<div class="col-md-10 offset-1 mb-4">
+                                    <div class="alert alert-info alert-dismissible fade show shadow rounded text-center" role="alert">
+                                        <strong>Info!</strong> el apartado de complementos de finiquito continua en proceso de desarrollo.
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>*@
+                                <div class="form-group col-md-2">
+                                    <label class="col-form-label font-labels col-ico font-weight-bold" for="option-settlement">
+                                        Opcion:
+                                    </label>
+                                    <select id="option-settlement" class="form-control form-control-sm" disabled>
+                                        <option value="none">Selecciona</option>
+                                        <option value="0" selected>Finiquito</option>
+                                        <option value="1">Complemento</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label class="col-form-label font-labels col-ico font-weight-bold" for="down-settlement">
+                                        Baja con finiquito
+                                    </label>
+                                    <select id="down-settlement" class="form-control form-control-sm">
+                                        <option value="none">Selecciona</option>
+                                        <option value="1">Si</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label class="col-form-label font-labels col-ico font-weight-bold">Fecha Baja</label>
+                                    <input type="date" class="form-control form-control-sm" id="dateDownEmp" />
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input type="hidden" readonly id="keyEmployee" />
+                                    <input type="hidden" readonly id="dateAntiquityEmp" />
+                                    <label class="col-form-label font-labels col-ico font-weight-bold">Tipo de Baja</label>
+                                    <select id="inTiposBaja" class="form-control form-control-sm">
+                                        <option value="none">Selecciona</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="col-form-label font-labels col-ico font-weight-bold">Motivos de Baja</label>
+                                    <select id="inMotivosBaja" class="form-control form-control-sm">
+                                        <option value="" selected>Selecciona</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3 animated" id="div-content-param0">
+                                    <label class="col-form-label font-labels col-ico font-weight-bold">Días A. anteriores</label>
+                                    <input type="number" class="form-control form-control-sm" id="daysYearsAfter" pattern="^[0-9]+" />
+                                </div>
+                                <div class="form-group col-md-3 animated" id="div-content-param1">
+                                    <label class="col-form-label font-labels col-ico font-weight-bold">Dias pendientes</label>
+                                    <input type="number" class="form-control form-control-sm" id="daysPendings" value="0" min="0" pattern="^[0-9]+" />
+                                </div>
+                                <div class="col-md-3 form-group animated" id="div-content-param2">
+                                    <label class="col-form-label font-labels col-ico font-weight-bold">Fecha a usar</label>
+                                    <select class="form-control form-control-sm" id="dateSendDown">
+                                        <option value="none">Selecciona</option>
+                                    </select>
+                                </div>
+                                @*<div class="col-md-3 form-group animated d-none" id="div-content-param3">
+                                    <label class="col-form-label font-labels col-ico font-weight-bold">Con compensacion especial</label>
+                                    <select class="form-control form-control-sm" id="compSendEsp">
+                                        <option value="none">Selecciona</option>
+                                        <option value="0" selected>No</option>
+                                        <option value="1">Si</option>
+                                    </select>
+                                </div>*@
+                                <div class="col-md-3 animated" id="div-content-param4">
+                                    <div class="form-group">
+                                        <div class="form-check mt-4">
+                                            <input class="form-check-input mt-2" type="checkbox" id="prop-settlement">
+                                            <label class="col-form-label font-labels  col-ico font-weight-bold" for="prop-settlement">Propuesta</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-center offset-4 mb-2 mt-3">
+                                    <button btn-data-read type="button" class="btn btn-primary btn-sm btn-icon-split" id="btnGuardaBaja">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-check"></i>
+                                        </span>
+                                        <span class="text">Guardar</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="tab-pane fade p-4" id="nav-redoc" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="tab-content" id="nav-tabContentRE">
+                        <div class="tab-pane fade show active p-3" id="nav-bajas-reactivacion" role="tabpanel" aria-labelledby="nav-reporte-tab">
+                            <div class="row mt-2">
+                                <div id="div-most-alert-data-bajas-reactivacion" class="col-md-6 offset-3"></div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="text-left">
+                                        <h6 class="col-ico font-navs">
+                                            <b> <i class="fas fa-clipboard-check fa-sm mr-ico-05"></i> Completa los parametros </b>
+                                        </h6>
+                                        <hr />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4 shadow rounded border-left-primary border-right-primary p-3" id="search-employee-down">
+                                <div class="col-md-10 offset-1">
+                                    <div class="form-group row mb-4 p-2 border-left-primary border-right-primary rounded shadow">
+                                        <div class="col-md-4 mt-2">
+                                            <h6 class="text-center">Buscar por: </h6>
+                                        </div>
+                                        <div class="col-md-4 text-center mt-2">
+                                            <div class="form-check">
+                                                <input data-read class="form-check-input" type="radio" name="filtroemp" id="filtronumber" value="numero" />
+                                                <label class="form-check-label font-weight-bold" for="filtronumber" id="labelfiltronumber">Nomina</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-center mt-2">
+                                            <div class="form-check">
+                                                <input data-read class="form-check-input" type="radio" name="filtroemp" id="filtroname" value="nombre" checked />
+                                                <label class="form-check-label font-weight-bold" for="filtroname" id="labelfiltroname">Nombre</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mt-4">
+                                        <label for="searchemployekey" class="col-form-label col-md-4 text-center" id="labelsearchemployee">
+                                            <i class="fas fa-user mr-2 col-ico"></i> <span id="labsearchemp">Nombre:</span>
+                                        </label>
+                                        <div class="col-md-8">
+                                            <input data-read type="text" autocomplete="off" class="form-control form-control-sm text-uppercase" id="searchemployekey" placeholder="NOMBRE DEL EMPLEADO" onkeypress="return check(event)" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 offset-2 shadow p-4 rounded ">
+                                    <div class="list-group animated fadeIn modal-dialog-scrollable" id="resultemployekey">
+                                    </div>
+                                    <div class="animated fadeIn" id="noresultssearchemployees"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                @*<div class="col-md-8 offset-2 shadow p-4 rounded ">
+                                        <div class="list-group animated fadeIn modal-dialog-scrollable" id="resultemployekey">
+                                        </div>
+                                        <div class="animated fadeIn" id="noresultssearchemployees"></div>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="tab-pane fade p-4" id="nav-bmasivas" role="tabpanel" aria-labelledby="settings-tab">
+                    <div class="row border-right-primary border-left-primary rounded shadow p-3">
+                        <div class="col-md-6 mt-2">
+                            <div class="text-left">
+                                <h6 class="col-ico font-nav-child">
+                                    <b>
+                                        <i class="fas fa-file-excel mr-ico-05"></i>
+                                        Archivos permitidos con extension .xlsx
+                                    </b>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-right">
+                                <a link-data-read="true" href="~/Content/Download/BajasMasivas.xlsx" download="BajaMasiva.xlsx" class="btn btn-primary btn-sm btn-icon-split" id="btn-download-file-masive-up">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-download"></i>
+                                    </span>
+                                    <span class="text">Descargar layout de ejemplo</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <hr />
+                        </div>
+                        <div class="col-md-8 offset-2 mt-2">
+                            <div class="card shadow rounded p-2 border-right-primary border-left-primary">
+                                <div class="text-center mt-3 mb-3">
+                                    <h6 class="card-title text-primary font-weight-bold">
+                                        <i class="fas fa-file-excel mr-2"></i>
+                                        Selecciona tu archivo .xlsx
+                                    </h6>
+                                    <hr />
+                                </div>
+                                <div class="form-group text-center">
+                                    <label for="file-upload-masive-up" id="label-file-upload-mu" class="btn-primary btn rounded shadow p-1 font-labels">
+                                        <i class="fas fa-search mr-2"></i> Buscar archivo
+                                    </label>
+                                    <input data-read id="file-upload-masive-up" type="file" style='display: none;' />
+                                    <div class="mt-2 animated">
+                                        <span class="badge animated font-weight-bold badge-light badge-pill p-2" id="name-file-up-masive"></span>
+                                    </div>
+                                    <hr />
+                                </div>
+                                <div class="form-group text-center">
+                                    <button btn-data-read type="button" class="btn btn-primary btn-sm btn-icon-split" id="btn-save-file-masive-up">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-file-upload"></i>
+                                        </span>
+                                        <span class="text">Subir archivo</span>
+                                    </button>
+                                    <div class="mt-4 animated" id="div-show-load-file"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 offset-2 mt-3 animated" id="div-content-load-info-1">
+                        </div>
+                        <div class="col-md-4 mt-3 animated" id="div-content-load-info-2">
+                        </div>
+                        <div class="col-md-6 offset-3 mt-3" id="div-content-download-log-file">
+                            @*<a class="btn btn-primary" id="download-file-log">Descargar</a>*@
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="tab-pane fade p-4" id="nav-finiquitos" role="tabpanel" aria-labelledby="finiquitos-tab">
+                    <div class="row border-right-primary border-left-primary rounded shadow p-3">
+                        <div class="col-md-6 mt-2">
+                            <div class="text-left">
+                                <h6 class="col-ico font-nav-child">
+                                    <b>
+                                        <i class="fas fa-file-excel mr-ico-05"></i>
+                                        Archivos permitidos con extension .xlsx
+                                    </b>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-right">
+                                <a href="~/Content/Download/LAYOUTFINIQUITOMASIVO.xlsx" download="LayoutFiniquitos.xlsx" class="btn btn-primary btn-sm btn-icon-split" id="btn-download-file-masive-up">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-download"></i>
+                                    </span>
+                                    <span class="text">Descargar layout de ejemplo</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <hr />
+                        </div>
+                        <div class="col-md-8 offset-2 mt-2">
+                            <div class="card shadow rounded p-2 border-right-primary border-left-primary">
+                                <div class="text-center mt-3 mb-3">
+                                    <h6 class="card-title text-primary font-weight-bold">
+                                        <i class="fas fa-file-excel mr-2"></i>
+                                        Selecciona tu archivo .xlsx
+                                    </h6>
+                                    <hr />
+                                </div>
+                                <div class="form-group text-center">
+                                    <label for="file-upload-masive-settlement" id="label-file-upload-settlement" class="btn-primary btn rounded shadow p-1 font-labels">
+                                        <i class="fas fa-search mr-2"></i> Buscar archivo
+                                    </label>
+                                    <input id="file-upload-masive-settlement" type="file" style='display: none;' />
+                                    <div class="mt-2 animated">
+                                        <span class="badge animated font-weight-bold badge-light badge-pill p-2" id="name-file-settlement-masive"></span>
+                                    </div>
+                                    <hr />
+                                </div>
+                                <div class="form-group text-center">
+                                    <button type="button" class="btn btn-primary btn-sm btn-icon-split" id="btn-save-file-masive-settlement">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-file-upload"></i>
+                                        </span>
+                                        <span class="text">Subir archivo</span>
+                                    </button>
+                                    <div class="mt-4 animated" id="div-show-load-file-settlement"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 offset-2 mt-3 animated" id="div-content-load-info-settlement-1">
+                        </div>
+                        <div class="col-md-4 mt-3 animated" id="div-content-load-info-settlement-2">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- VENTANA MODAL EMPLEADOS -->
+@*<div class="modal fade bg-gradient" data-backdrop="static" id="searchemploye" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="searchpuestoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+            <div class="modal-content border-left-primary">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="searchemployelabel"> <i class="fas fa-users mr-2 col-ico"></i> Empleados</h5>
+                    <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close" id="ico-close-searchemployes-btn">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group row mb-4 p-2 border-left-primary border-right-primary rounded shadow">
+                                    <div class="col-md-4 mt-2">
+                                        <h6 class="text-center">Buscar por: </h6>
+                                    </div>
+                                    <div class="col-md-4 text-center mt-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="filtroemp" id="filtronumber" value="numero" />
+                                            <label class="form-check-label font-weight-bold" for="filtronumber" id="labelfiltronumber">Nomina</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-center mt-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="filtroemp" id="filtroname" value="nombre" checked />
+                                            <label class="form-check-label font-weight-bold" for="filtroname" id="labelfiltroname">Nombre</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-4">
+                                    <label for="searchemployekey" class="col-form-label col-md-4 text-center" id="labelsearchemployee">
+                                        <i class="fas fa-user mr-2 col-ico"></i> <span id="labsearchemp">Nombre:</span>
+                                    </label>
+                                    <div class="col-md-8">
+                                        <input type="text" autocomplete="off" class="form-control form-control-sm text-uppercase" id="searchemployekey" placeholder="NOMBRE DEL EMPLEADO" onkeypress="return check(event)" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="list-group animated fadeIn modal-dialog-scrollable" id="resultemployekey">
+                                </div>
+                                <div class="animated fadeIn" id="noresultssearchemployees"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-dismiss="modal" id="btn-close-searchemployes-btn"> <i class="fas fa-times mr-2"></i> Cerrar</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-danger btn-sm btn-icon-split" id="btn-close-searchemployes-btn">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-times"></i>
+                        </span>
+                        <span class="text">Cerrar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+@* MODAL DE LIVE SEARCH EMPLEADO *@
+<!-- Modal -->
+<div class="modal fade" id="modalLiveSearchEmpleado" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-labels" id="staticBackdropLabel">Busca el empleado</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="search-box col-md-12">
+                        <label for="inputSearchEmpleados" class="font-labels">Escribe el nombre del empleado que buscas</label>
+                        <input type="text" name="inputSearchEmpleados" id="inputSearchEmpleados" placeholder="Escriba el nombre del empleado" class=" form-control" autocomplete="off" />
+                        <div id="resultSearchEmpleados" name="resultSearchEmpleados" class="list-group"></div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-3 pb-3">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- VENTANA MODAL QUE MUESTRA LA INFORMACION DE LOS FINIQUITOS -->
+<div class="modal fade" id="window-data-down" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content border-left-primary">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel"> <i class="fas fa-file-alt col-ico mr-2"></i>Propuestas Finiquitos </h5>
+                <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group" id="list-data-down">
+                </ul>
+                <div class="row" id="no-data-info"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-danger btn-sm btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-times"></i>
+                    </span>
+                    <span class="text">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- VENTANA MODAL QUE MUESTRA EL DETALLE DEL FINIQUITO -->
+<div class="modal fade" id="settlement-details" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content border-left-primary">
+            <div class="modal-header">
+                <h6 class="modal-title" id="headerSettlement"> <i class="fas fa-tag col-ico mr-2"></i><span id="typeSettlement" class="text-danger"></span> <span class="badge badge-danger shadow p-2" id="typeDown"></span> <span class="badge badge-info shadow p-2" id="proyect"></span>  </h6>
+                <button type="button" class="close text-danger" id="icoCloseSettlementSelect" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="div-details"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-danger btn-sm btn-icon-split" id="btnCloseSettlementSelect">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-times"></i>
+                    </span>
+                    <span class="text">Cerrar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal complemento finiquito -->
+<!-- Modal -->
+<div class="modal fade" id="modalComplementSettlement" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleComplement"> <i class="fas fa-plus mr-2 text-primary"></i> Complemento a <span id="nameEmployeeAddC"></span> </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="icoCloseComplementSettlement">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row rounded shadow p-3 align-items-center">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-form-label" for="concept">Concepto:</label>
+                                <select class="form-control form-control-sm" id="conceptComplement">
+                                    <option value="0">Selecciona</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="col-form-label" for="import">Importe:</label>
+                                <input type="number" class="form-control form-control-sm" id="importConcept" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="form-group">
+                                <label class="col-form-label" for=""> Accion: </label>
+                                <button class="btn btn-primary btn-sm btn-block" type="button" id="btnAddComplement">
+                                    <i class="fas fa-plus mr-2"></i> Añadir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3" id="contentTable">
+                        <div class="col-md-8 offset-2">
+                            <table class="table">
+                                <thead class="">
+                                    <tr>
+                                        <th scope="col" class="text-primary">#</th>
+                                        <th scope="col">Concepto</th>
+                                        <th scope="col">Importe</th>
+                                        <th scope="col">Accion</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyComplements"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" id="btnCloseComplementSettlement">Cerrar</button>
+                <button type="button" class="btn btn-primary btn-sm" id="btnSaveComplementSettlement">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Muestra los complementos del finiquito -->
+<div class="modal fade" id="modalViewComplements" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleViewComplementSettlement">Complementos de finiquito</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="icoCloseViewComplements">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row align-items-center" id="contentViewComplements"></div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" id="btnCloseViewComplements">Cerrar</button> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function check(e) {
+        tecla = (document.all) ? e.keyCode : e.which;
+        if (tecla == 8) {
+            return true;
+        }
+        patron = /[A-Za-z0-9 ]/;
+        tecla_final = String.fromCharCode(tecla);
+        return patron.test(tecla_final);
+    }
+</script>
+
+<script type="text/javascript" src="~/Scripts/main/BajasEmpleados.js?n=8.3" defer></script>
+<script type="text/javascript" src="~/Scripts/main/BajasMasivas/main.js?n=1.3" defer></script>
+<script type="text/javascript" src="~/Scripts/main/BajasEmpleados/reactivateEmploye.js?n=0.2" defer></script>
+<script type="text/javascript" src="~/Scripts/main/BajasEmpleados/settlementMassive.js?v=0.1" defer></script>
+<script type="text/javascript" src="~/Scripts/main/controlpermisos.js" defer></script>

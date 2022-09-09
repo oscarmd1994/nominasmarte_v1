@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="expires" content="-1" />
+  <title>Marte</title>
+  <link rel="icon" type="image/png" href="~/Content/MDB/mars2.png" />
+  @*<link rel="stylesheet" href="~/Content/bootstrap/css/bootstrap.min.css" />*@
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
+  <link href="~/Content/MDB/bootstrap.css" rel="stylesheet" />
+  <link href="~/Content/MDB/mdb.css" rel="stylesheet" />
+  <link href="~/Content/MDB/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="~/Content/styles/login.css" />
+  <link rel="stylesheet" href="~/Content/animate/animate.css" />
+  <link rel="stylesheet" href="~/Content/datatables-new/sb-admin-2.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+</head>
+<body>
+  <header>
+    <div class="view" style="background-image: url('../../Content/MDB/fondologin.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+      <div class="mask rgba-indigo-light d-flex justify-content-center align-items-center">
+        <div class="container">
+          <div class="col-md-5 mx-auto animated fadeInDown">
+            <div class="card shadow border-0 bg-white">
+              <div class="w-100 bg-logo rounded-top pt-1">
+                <div class="col-md-7 mx-auto logo-font text-center h1">
+                  <div class="row">
+                    <div class="col-md-12 pt-3">
+                      <img src="~/Content/MDB/mars2.png" class="mx-auto" height="70" alt="logo" />
+                    </div>
+                    <div class="col-md-12 text-white">marte</div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="w-100 text-center pt-1 font-labels">Iniciar sesión</h5>
+                <form class="p-4" id="frmLogin">
+                  <div class="form-group row">
+                    <div class="input-group mb-1 col-md-10 mx-auto">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text " id="basic-addon1">
+                          <i class="fas fa-user text-dark"></i>
+                        </span>
+                      </div>
+                      <input autofocus type="text" class="form-control form-control-sm text-uppercase" id="username" placeholder="Usuario" />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="input-group mb-1 col-md-10 mx-auto">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text " id="basic-addon1">
+                          <i class="fas fa-key text-dark"></i>
+                        </span>
+                      </div>
+                      <input type="password" class="form-control form-control-sm" id="password" placeholder="CONTRASEÑA" />
+                    </div>
+                  </div>
+                  <div class="form-group text-center mt-1 mb-0 row">
+                    <button type="submit" class="btn col-btn-login btn-sm col-md-9 mx-auto font-button" id="btnlogin">
+                      <span class="text">Ingresar <i class="fas fa-sign-in-alt ml-ico-05"></i></span>
+                    </button>
+                  </div>
+                  <div class="form-group row mt-2 d-none" id="msjvalidateinfo">
+                    <div class="col-md-12 text-center">
+                      <span class="badge badge-light p-2 text-dark rounded animated fadeIn btn-block font-weight-bold">
+                        Validando información, espere...
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group row mt-2 d-none" id="msjmaysact">
+                    <div class="col-md-12 text-center">
+                      <span class="badge badge-light p-2 text-dark rounded animated fadeIn btn-block font-weight-bold">
+                        La tecla mayusculas esta activada
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group text-center mt-2 mb-0" id="diverror">
+                    <p class="text-danger font-size-footer" id="msgerror"></p>
+                  </div>
+                </form>
+              </div>
+              <div class="w-100 text-center">
+                <p class="title-font font-size-footer">
+                  <span class="logo-font logo-txt h5">marte</span><i class="far fa-registered small font-labels"></i> <span class="small font-labels"> Version 1.6.2</span><br />
+                  @*<i class="fas fa-copyright mr-05-ico ml-05-ico"></i> @DateTime.Now.Year - <a class="pink-text" href="#">www.marte.com.mx</a> Todos los derechos reservados. <br />*@
+                  @*<i class="fas fa-flag mr-05-ico ml-05-ico"></i> Icons by <a class="pink-text" href="https://fontawesome.com/"> FontAwesome</a>.*@
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  @RenderBody()
+  <script type="text/javascript" src="~/Content/MDB/jquery.js"></script>
+  <script type="text/javascript" src="~/Content/MDB/popper.js"></script>
+  <script type="text/javascript" src="~/Content/MDB/bootstrap.js"></script>
+  <script type="text/javascript" src="~/Content/MDB/mdb.js"></script>
+  <script type="text/javascript" src="~/Scripts/fontawesome/fontawesome.js"></script>
+  <script type="text/javascript" src="~/Scripts/sweetalert/sweetalert.min.js"></script>
+  <script type="text/javascript" src="~/Scripts/login.js?v=0.3" defer></script>
+</body>
+</html>

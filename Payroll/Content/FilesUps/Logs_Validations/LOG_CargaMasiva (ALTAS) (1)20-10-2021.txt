@@ -1,0 +1,7 @@
+﻿* -- Datos insertados -- *
+[*] Fila = 2, [*] Empresa = 49, [*] Nombre = NEFTALI CISNEROS ALCANTARA, [*] Nomina = 10005
+[*] Fila = 3, [*] Empresa = 49, [*] Nombre = JESUS ALBERTO MOGUEL CORTES, [*] Nomina = 10009
+[*] Fila = 4, [*] Empresa = 49, [*] Nombre = EDGAR ALBERTO ARANDA CHAVEZ, [*] Nomina = 10010
+[*] Fila = 5, [*] Empresa = 49, [*] Nombre = SERGIO FLORES MARTINEZ, [*] Nomina = 10016
+[*] Fila = 6, [*] Empresa = 49, [*] Nombre = LUIS MANUEL GARCIA CHACON, [*] Nomina = 10022
+

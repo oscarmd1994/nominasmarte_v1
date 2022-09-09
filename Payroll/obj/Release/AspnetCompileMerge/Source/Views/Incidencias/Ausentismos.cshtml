@@ -1,0 +1,176 @@
+﻿<div class="container bg-white pb-3 rounded font-labels shadow shadow-lg border-left-primary border-right-primary text-dark">
+  <div class="border-bottom border-secondary pt-4 pb-2 font-weight-bold d-flex justify-content-between"><div>Registrar ausentismo a empleado : </div><strong class="font-button" id="EmpDes"></strong><div class="btn btn-info btn-sm font-labels" id="btn-cambiar-empleado" title="Cambia de usuario"><i class="fas fa-users"></i></div></div>
+  <div class="row">
+    <div class="col-md-4 rounded">
+      <form action="#" method="post" class="bg-light px-3 py-3 rounded" id="frmAusentismos">
+        <div class="form-group row">
+          <div class="form-group col-md-12">
+            <label for="">Motivo del ausentismo</label>
+            <select class="form-control font-labels custom-select custom-select-sm" id="inMotivoAusentismo" name="inMotivoAusentismo" required>
+              <option value="">Selecciona</option>
+            </select>
+          </div>
+          <div class="form-group col-md-12">
+            <label for="inRecuperacionAusentismo">Recupera ausentismo</label>
+            <select class="form-control font-labels custom-select custom-select-sm" id="inRecuperacionAusentismo" required>
+              <option value="">Selecciona</option>
+              <option value="Sexto y septimo dia">Sexto y septimo día</option>
+              <option value="Septimo dia">Septimo día</option>
+              <option value="No aplicar">No aplicar</option>
+            </select>
+          </div>
+
+          <div class="col-md-12 px-0" id="frmtipo">
+            <div class="form-group col-md-12">
+              <label for="inFechaAusentismo">Fecha</label>
+              <input type="date" name="inFechaAusentismo" id="inFechaAusentismo" class="form-control form-control-sm font-labels" required />
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inDiasAusentismo">Dias</label>
+              <input type="text" name="inDiasAusentismo" id="inDiasAusentismo" class="form-control input-number form-control-sm" placeholder="Escriba los dias de Ausentismo" min="1" maxlength="2" required />
+            </div>
+            <div class="form-group col-md-12">
+              <label for="inDiasAusentismo">Saldo Dias</label>
+              <input type="text" name="inSaldoDiasAusentismo" id="inSaldoDiasAusentismo" disabled class=" form-control input-number form-control-sm" placeholder="Escriba el saldo de dias de Ausentismo" min="1" maxlength="2" required />
+            </div>
+          </div>
+          <div class="form-group col-md-12">
+            <label for="inCausaAusentismo">Causa</label>
+            <input type="text" name="inCausaAusentismo" id="inCausaAusentismo" value="" class="form-control form-control-sm" placeholder="Escriba la causa del Ausentismo" required />
+          </div>
+          <div class="form-group imss col-md-12">
+            <label for="inCertificadoAusentismo">Certificado</label>
+            <input type="text" name="inCertificadoAusentismo" id="inCertificadoAusentismo" value="" class="form-control form-control-sm" placeholder="Folio de certificado" required />
+            <div class="" id="vcertificado"></div>
+          </div>
+          <div class="form-group imss col-md-12">
+            <label for="inComentariosAusentismo">Comentarios</label>
+            <input type="text" name="inComentariosAusentismo" id="inComentariosAusentismo" value="" class="form-control form-control-sm" placeholder="Escriba un comentario" required />
+          </div>
+          <input type="hidden" id="inIncidenciaProgramada_id" value="" />
+          <div class=" col-md-12 d-flex justify-content-end">
+            <label class="sr-only"></label>
+            <button type="button" class="btn btn-sm btn-primary btn-priority mx-1 btn-icon-split font-labels" id="btnRegistroAusentismo">
+              <span class="icon"><i class="fas fa-save"></i></span>
+              <span class="text">Guardar</span>
+            </button>
+            <button type="reset" class="btn btn-warning btn-sm mx-1 btn-priority btn-icon-split invisible font-labels" id="btnClear">
+              <span class="icon"><i class="fas fa-eraser"></i></span>
+              <span class="text">Limpiar</span>
+            </button>
+            <div class="btn btn-success btn-sm mx-1 btn-icon-split btn-priority invisible font-labels" id="btnUpdate" btnupdate="">
+              <span class="icon"><i class="fas fa-edit"></i></span>
+              <span class="text">Actualizar</span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-8 mt-3">
+
+      <ul class="nav nav-tabs font-weight-bold" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active h6 text-info" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"> <i class="fas fa-calendar-times text-primary" style="color:#020F59;"></i> Todos los ausentismos </a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link h6 text-info" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">  <i class="fas fa-calendar-plus text-primary" style="color:#020F59;"></i>  Incapacidades </a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link h6 text-info" id="historial-tab" data-toggle="tab" href="#historial" role="tab" aria-controls="historial" aria-selected="false">  <i class="fas fa-history text-primary" style="color:#020F59;"></i>  Historial </a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <table class="table table-sm font-labels text-center table-striped" id="tabAusentismos">
+            <thead>
+              <tr>
+                <th scope="col">Motivo</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Dias</th>
+                <th scope="col">Saldo Dias</th>
+                <th scope="col">Recupera</th>
+                <th scope="col">Causa</th>
+                <th scope="col">Certificado IMSS</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tabody">
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+          <table class="table table-sm font-labels text-center table-striped" id="tabIncapacidades">
+            <thead>
+              <tr>
+                <th scope="col">Motivo</th>
+                <th scope="col">Fecha Inicio</th>
+                <th scope="col">Dias</th>
+                <th scope="col">Saldo dias</th>
+                <th scope="col">Causa</th>
+                <th scope="col">Certificado IMSS</th>
+                <th scope="col">Comentarios IMSS</th>
+              </tr>
+            </thead>
+            <tbody id="tabodyIncapacidades">
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-pane pt-2 fade" id="historial" role="tabpanel" aria-labelledby="historial-tab">
+          <table class="table small table-sm font-labels text-center table-striped" id="tabhistorial">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Motivo</th>
+                <th scope="col">Fecha Inicio</th>
+                <th scope="col">Dias</th>
+                <th scope="col">Saldo dias</th>
+                @*<th scope="col">Causa</th>*@
+                <th scope="col">Certificado IMSS</th>
+                <th scope="col">Referencia</th>
+              </tr>
+            </thead>
+            <tbody id="tabodyhistorial" class="text-black">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+@* MODAL DE LIVE SEARCH EMPLEADO *@
+<!-- Modal -->
+<div class="modal fade" id="modalLiveSearchEmpleado" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark font-weight-bold" id="staticBackdropLabel"> <i class="fas fa-search"></i> Buscar empleado <span id="politicas-modal-title" class="politicas-modal-title"></span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="search-box col-md-12">
+
+            <label for="inputSearchEmpleados" class="font-labels">Escribe el nombre del empleado que buscas</label>
+            <input type="text" name="inputSearchEmpleados" id="inputSearchEmpleados" placeholder="Escriba el nombre del empleado" class=" form-control" autocomplete="off" />
+            <div id="resultSearchEmpleados" name="resultSearchEmpleados" class="list-group"></div>
+
+          </div>
+          <div class="col-lg-3 col-md-3 col-3 pb-3">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="~/Scripts/main/Ausentismos.js"></script>
+<script>
+  $(function () {
+    
+    LoadSelectRecuperaAusentismo();
+    $("#modalLiveSearchEmpleado").modal("toggle");
+  });
+</script>

@@ -1,0 +1,2 @@
+﻿* -- Excepciones -- *[*] Fila = 2, [*] Excepcion = General, [*] Tipo = System.IndexOutOfRangeException, [*] Mensaje = Índice fuera de los límites de la matriz.
+

@@ -1,0 +1,1 @@
+﻿[*] Empresa: 0. Nomina: 0. Mensaje: success. Usuario: MAGUILAR. |->  Stored Procedure: EXEC sp_Actualiza_Datos_Bancarios 4 , 10000 , '3800' , 'DIFERENCIA'
