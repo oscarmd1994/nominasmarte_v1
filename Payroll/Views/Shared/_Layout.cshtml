@@ -34,11 +34,11 @@
 
 <body class="fixed-sn black-skin" id="body-init">
   <header>
-    <div id="slide-out" class="side-nav sn-bg-3 mdb-color darken-4 fixed">
+    <div id="slide-out" class="side-nav mdb-color darken-4 fixed">
       <ul class="overflow-auto">
         <li class="">
           <div class="waves-light">
-            <div class="w-100 bg-logo rounded-top py-2">
+            <div class="w-100 rounded-top py-2">
               <div class="col-md-12 text-center">
                 <img class="py-1" width="60" src="~/Content/MDB/mars2.png" alt="logo">
               </div>
@@ -54,11 +54,11 @@
         <li class="pb-4">
           <ul class="accordion collapsible collapsible-accordion NavMenu" id="sidenavMenu"></ul>
         </li>
-        <li class="bg-dark font-weight-bold fixed-bottom text-center font-labels">
-          Version 1.6.2
+        <li class="fixed-bottom py-2">
+          
         </li>
       </ul>
-      <div class="sidenav-bg mask-strong"></div>
+      @*<div class="sidenav-bg "></div>*@
     </div>
     <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-xl scrolling-navbar double-nav mdb-color darken-4">
       <div class="float-left">
@@ -67,8 +67,8 @@
         </a>
       </div>
       <div class="breadcrumb-dn"></div>
-      <ul class="nav navbar-nav nav-flex-icons mx-auto">
-        <li class="nav-item">
+      <ul class="nav navbar-nav nav-flex-icons mx-auto text-white">
+        <li class="nav-item ">
           <a class="nav-link">
             <i class="fas fa-user"></i>
             <span class="clearfix d-none d-sm-inline-block">@Session["sUsuario"]</span>

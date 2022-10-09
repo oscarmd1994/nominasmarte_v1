@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP|Noto+Sans+KR&display=swap');
 
 body {
-    background-color: rgba(233, 30, 99, 0.06) !important;
+    background-color: white !important;
 }
 /* Background de ventanas modales */
 .bg-gradient {

@@ -62,8 +62,8 @@ body {
 
 /* Colores y letra de botones */
 .col-btn-login {
-    background-color: #125a78 !important;
-    color: aliceblue !important;
+    background-color: #7b0000 !important;
+    color: white !important;
     padding: 0.5em !important;
     transition: 1s !important;
     box-shadow: 4px 4px #ddd;
@@ -71,7 +71,7 @@ body {
 
     .col-btn-login:hover {
         background-color: aliceblue !important;
-        color: #125a78 !important;
+        color: #7b0000 !important;
         box-shadow: 2px 2px #ddd;
     }
 
