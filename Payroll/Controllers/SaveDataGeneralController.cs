@@ -281,7 +281,7 @@ namespace Payroll.Controllers
             Boolean flag          = false;
             String  messageError  = "none";
             string  convertFEffdt = DateTime.Parse(fechefectpos).ToString("dd/MM/yyyy");
-            string  convertFIniP  = DateTime.Parse(fechinipos).ToString("dd/MM/yyyy");
+            string  convertFIniP  = fechinipos != "" ? DateTime.Parse(fechinipos).ToString("dd/MM/yyyy") : "";
             DatosPosicionesBean addPosicionBean   = new DatosPosicionesBean();
             DatosPosicionesDao datoPosicionDao    = new DatosPosicionesDao();
             LoadTypePeriodPayrollBean periodBean  = new LoadTypePeriodPayrollBean();

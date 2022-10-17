@@ -693,8 +693,8 @@ namespace Payroll.Models.Daos
                     posicionBean.sNombrePuesto   = data["NombrePuesto"].ToString();
                     posicionBean.iDepartamento_id    = Convert.ToInt32(v.ValidationsInts(data["Departamento_id"].ToString()));
                     posicionBean.sNombreDepartamento = data["DescripcionDepartamento"].ToString();
-                    posicionBean.iIdReportaAPosicion = Convert.ToInt32(data["CodRep"].ToString());
-                    posicionBean.iIdReportaAEmpresa  = Convert.ToInt32(v.ValidationsInts(data["Reporta_A_Empresa"].ToString()));
+                    posicionBean.iIdReportaAPosicion = (data["CodRep"].ToString() != "") ? Convert.ToInt32(data["CodRep"].ToString()) : 0;
+                    posicionBean.iIdReportaAEmpresa  = (data["Reporta_A_Empresa"].ToString() != "") ? Convert.ToInt32(v.ValidationsInts(data["Reporta_A_Empresa"].ToString())) : 0;
                     posicionBean.iIdRegistroPat = Convert.ToInt32(v.ValidationsInts(data["IdRegPat"].ToString()));
                     posicionBean.sRegistroPat   = data["Afiliacion_IMSS"].ToString();
                     posicionBean.iIdLocalidad   = Convert.ToInt32(v.ValidationsInts(data["IdLocalidad"].ToString()));
@@ -860,7 +860,7 @@ namespace Payroll.Models.Daos
                         posicionBean.sNombrePuesto = data["NombrePuesto"].ToString();
                         posicionBean.iDepartamento_id = Convert.ToInt32(data["Departamento_id"].ToString());
                         posicionBean.sNombreDepartamento = data["Depto_Codigo"].ToString();
-                        posicionBean.iIdReportaAPosicion = Convert.ToInt32(data["Reporta_A_Posicion_id"].ToString());
+                        posicionBean.iIdReportaAPosicion = (data["Reporta_A_Posicion_id"].ToString() != "") ? Convert.ToInt32(data["Reporta_A_Posicion_id"].ToString()) : 0;
                         posicionBean.iIdRegistroPat = Convert.ToInt32(data["IdRegPat"].ToString());
                         posicionBean.sRegistroPat = data["Afiliacion_IMSS"].ToString();
                         posicionBean.iIdLocalidad = Convert.ToInt32(data["IdLocalidad"].ToString());

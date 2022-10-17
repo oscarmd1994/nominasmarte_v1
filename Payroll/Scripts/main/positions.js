@@ -592,7 +592,7 @@
     /* EJECUCION DE EVENTO QUE REGISTRA UNA NUEVA POSICION */
     btnsaveposition.addEventListener('click', () => {
         try {
-            const arrInput = [codposic, depaid, puesid, regpatcla, localityr, emprepreg, reportempr];
+            const arrInput = [codposic, depaid, puesid, regpatcla, localityr];
             let validate = 0;
             for (let i = 0; i < arrInput.length; i++) {
                 if (arrInput[i].hasAttribute('tp-select')) {
@@ -613,7 +613,7 @@
             if (validate == 0) {
                 const dataSend = {
                     codposic: codposic.value, depaid: depaid.value, puesid: puesid.value, regpatcla: regpatcla.value,
-                    localityr: localityr.value, emprepreg: emprepreg.value, reportempr: reportempr.value
+                    localityr: localityr.value, emprepreg: (emprepreg.value != "") ? emprepreg.value : 0, reportempr: (reportempr.value != "") ? reportempr.value : 0
                 };
                 //console.log(dataSend);
                 $.ajax({
