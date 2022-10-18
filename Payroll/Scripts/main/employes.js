@@ -156,7 +156,7 @@ $(function () {
                     }
                 });
             } else {
-                alert('Ocurrio un error al cargar el historial Imss del Empleado');
+                Swal.fire({ title: "", text: "No existe historial de IMSS para el empleado", timer: 5000, showConfirmButton: false, allowEnterKey: false, allowEscapeKey: false });
             }
         } catch (error) {
             if (error instanceof EvalError) {
@@ -294,7 +294,7 @@ $(function () {
                     }
                 });
             } else {
-                alert('Ocurrio un error al cargar el Historial Nomina del empleado');
+                Swal.fire({ title: "", text: "No existe historial de Movimientos para el empleado", timer: 5000, showConfirmButton: false, allowEnterKey: false, allowEscapeKey: false });
             }
         } catch (error) {
             if (error instanceof EvalError) {
@@ -550,7 +550,7 @@ $(function () {
                     }
                 });
             } else {
-                alert('Ocurrio un error al cargar el Historial Nomina del empleado');
+                Swal.fire({ title: "", text: "No existe historial de Nomina para el empleado", timer: 5000, showConfirmButton: false, allowEnterKey: false, allowEscapeKey: false });
             }
         } catch (error) {
             if (error instanceof RangeError) {
@@ -666,7 +666,7 @@ $(function () {
                                 }
                             }, 500);
                         } else {
-                            alert('Ocurrio un problema al cargar el historial');
+                            Swal.fire({ title: "", text: "No existe historial de Estructura para el empleado", timer: 5000, showConfirmButton: false, allowEnterKey: false, allowEscapeKey: false });
                         }
                     }, error: (jqXHR, exception) => {
                         fcaptureaerrorsajax(jqXHR, exception);
