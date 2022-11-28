@@ -21,7 +21,8 @@ namespace Payroll.Models.Beans
         public string iCancelado { get; set; }
         public int iUsuarioAlta { get; set; }
         public string sFechaAlta { get; set; }
-
+        public string TR { get; set; }
+        public string TD { get; set; }
         public string sMensaje { get; set; }
 
     }
@@ -128,6 +129,8 @@ namespace Payroll.Models.Beans
         public string iEsespejo { get; set; }
 
         public string iIdAcumulado { get; set; }
+        public string TR { get; set; }
+        public string TD { get; set; }
 
         public string sMensaje { get; set; }
 
@@ -294,7 +297,7 @@ namespace Payroll.Models.Beans
 
     public class ReciboNominaBean
     {
-        public int iIdFiniquito { get; set; } 
+        public int iIdFiniquito { get; set; }
         public int iIdEmpleado { get; set; }
         public int iIdRenglon { get; set; }
         public int iIdTipoPeriodo { get; set; }
@@ -313,7 +316,11 @@ namespace Payroll.Models.Beans
         public decimal dHoras { get; set; }
         public int iGrupEmpresa { get; set; }
         public decimal iDiasTrab { get; set; }
-       public string sMensaje { get; set; }
+
+        public string TR { get; set; }
+        public string TD { get; set; }
+
+        public string sMensaje { get; set; }
 
     }
 
@@ -326,6 +333,9 @@ namespace Payroll.Models.Beans
         public string dInformativos { get; set; }
         public string dGravados { get; set; }
         public string dExcento { get; set; }
+
+        public string TR { get; set; }
+        public string TD { get; set; }
         public string sMensaje { get; set; }
     }
 

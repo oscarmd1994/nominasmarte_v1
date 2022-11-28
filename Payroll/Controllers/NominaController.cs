@@ -207,12 +207,13 @@ namespace Payroll.Controllers
 
                     }
 
+                    string idtr = i + "TbPerId";
+                    Dt[i].TR = "<tr id=" + idtr + "></tr>";
+                    Dt[i].TD = "<td>" + Dt[i].iIdDefinicionln + "</td><td>" + Dt[i].IdEmpresa + "</td><td>" + Dt[i].iRenglon + "</td><td>" + Dt[i].iTipodeperiodo + "</td><td>" + Dt[i].iEsespejo + "</td><td> <a id= BActuPer  ><i class= AAA fa fa-pencil AAA  value= Actualizar data-toggle= modal  data-target= #AgregarPercepcion  onclick= botonActuPer(" + i + ")    style= AAA margin-left:25; margin-top:5px ;color: blue AAA ></i> </a></td><td> <a id = DeletePer ><i class= AAA fa fa-trash AAA  onclick= FDeleteDefinicionNLPer(" + i + ")   style= AAA margin-left:25; margin-top:5px ;color: blue AAA ></i> </a></td>";
+
                 }
 
             }
-
-
-
             return Json(Dt);
         }
         [HttpPost]
@@ -244,8 +245,6 @@ namespace Payroll.Controllers
                         Dta[i].iIdAcumulado = "";
                     }
 
-
-
                     if (Dta[i].iIdAcumulado != "0" && Dta[i].iIdAcumulado != "" && Dta[i].iIdAcumulado != " ")
                     {
 
@@ -255,7 +254,14 @@ namespace Payroll.Controllers
 
                     }
 
+                    string idtr = i + "TbDedId";
+                    Dta[i].TR = "<tr id=" + idtr + "></tr>";
+                    Dta[i].TD = "<td>" + Dta[i].iIdDefinicionln + "</td><td>" + Dta[i].IdEmpresa + "</td><td>" + Dta[i].iRenglon + "</td><td>" + Dta[i].iTipodeperiodo + "</td><td>" + Dta[i].iEsespejo + "</td><td> <a id= BActuDeduc  ><i class= AAA fa fa-pencil AAA  value= Actualizar data-toggle= modal  data-target= #AgregarDeducciones  onclick= FActualizaboton(" + i + ")    style= AAA margin-left:25; margin-top:5px ;color: blue AAA ></i> </a></td><td> <a id = DeletePer ><i class= AAA fa fa-trash AAA  onclick= FDeleteDefinicionNLdedu(" + i + ")   style= AAA margin-left:25; margin-top:5px ;color: blue AAA ></i> </a></td>";
+
+
+
                 }
+
             }
 
 
@@ -274,29 +280,35 @@ namespace Payroll.Controllers
         [HttpPost]
         public JsonResult TpDefinicionNomina()
         {
-
             string usuario = Session["sUsuario"].ToString();
             string usuarioper = Session["Consulta"].ToString();
             List<NominahdBean> LNH = new List<NominahdBean>();
             FuncionesNomina dao = new FuncionesNomina();
             int usuarioid = int.Parse(Session["iIdUsuario"].ToString());
             LNH = dao.sp_TpDefinicionesNom_Retrieve_TpDefinicionNom(usuarioid);
-
-            for (int i = 0; i < LNH.Count; i++)
+            if (LNH != null)
             {
-
-                if (LNH[i].iCancelado == "True")
+                for (int i = 0; i < LNH.Count; i++)
                 {
-                    LNH[i].iCancelado = "Si";
-                }
 
-                else if (LNH[i].iCancelado == "False")
-                {
-                    LNH[i].iCancelado = "No";
+                    if (LNH[i].iCancelado == "True")
+                    {
+
+                    }
+
+
+                    else if (LNH[i].iCancelado == "False")
+                    {
+                        LNH[i].iCancelado = "No";
+                    }
+                    string idtr = LNH[i].iIdDefinicionhd + "TbId";
+                    LNH[i].TR = "<tr id=" + idtr + "></tr>";
+                    LNH[i].TD = " <td>" + LNH[i].iIdDefinicionhd + "</td><td>" + LNH[i].sNombreDefinicion + "</td><td>" + LNH[i].sDescripcion + "</td><td>" + LNH[i].iAno + "</td><td>" + LNH[i].iCancelado + "</td><td> <a id = ActuA ><i class= AAA fa fa-pencil AAA  onclick=FPrueba(" + LNH[i].iIdDefinicionhd + ")  data-toggle= modal data-target= #AgreActuDefinicion style= AAA margin-left:25; margin-top:5px ;color: blue AAA >Editar</i> </a></td><td> <a id = ActuA ><i class= AAA fa fa-eye AAA  onclick=FSelectDefinicion(" + LNH[i].iIdDefinicionhd + ")   style= AAA margin-left:25; margin-top:5px ;color: blue AAA >Detalle</i> </a></td>";
+
+
                 }
 
             }
-
             return Json(LNH);
         }
         [HttpPost]

@@ -275,7 +275,7 @@
         NoEmpleado;
 
         const dataSendFinQ = { iIdEmpresa: IdEmpresa, TipoPeriodo: TipodePerdioRec.value, periodo: arreglosubcadena[0], Anio: anoNom.value, IdEmpleado: NoEmpleado };
-        console.log(dataSendFinQ);
+
 
         $.ajax({
             url: "../Empleados/ListEmpleadoFin",
@@ -458,41 +458,24 @@
         }
 
         if (CheckFiniquito.checked == false) {
+            $("#tabbodyReci").remove();
+            document.getElementById('TableReci').innerHTML += '<tbody id="tabbodyReci"> </tbody>';
             $.ajax({
                 url: "../Empleados/ReciboNomina",
                 type: "POST",
                 data: dataSend2,
                 success: (data) => {
-                    var source =
-                    {
-                        localdata: data,
-                        datatype: "array",
-                        datafields:
-                            [
-                                { name: 'sConcepto', type: 'string' },
-                                { name: 'dPercepciones', type: 'decimal' },
-                                { name: 'dDeducciones', type: 'decimal' },
-                                { name: 'dGravados', type: 'decimal' },
-                                { name: 'dExcento', type: 'decimal' }
-                            ]
-                    };
+                    console.log('Tabla');
+                    console.log(data);
+                    for (i = 0; i < data.length; i++) {
+                        TR = data[i].TR;
+                        TD = data[i].TD;
+                        TD = TD.replace(/ AAA /g, '"');
+                        document.getElementById('tabbodyReci').innerHTML += TR;
+                        document.getElementById(i + 'TbDedId').innerHTML += TD;
+                    }
 
-                    var dataAdapter = new $.jqx.dataAdapter(source);
-                    $("#TbRecibosNomina").jqxGrid(
-                        {
 
-                            width: 720,
-                            height: 250,
-                            source: dataAdapter,
-                            columnsresize: true,
-                            columns: [
-                                { text: 'Concepto', datafield: 'sConcepto', width: 300 },
-                                { text: 'Percepciones', datafield: 'dPercepciones', cellsformat: 'c2', width: 100 },
-                                { text: 'Deducciones ', datafield: 'dDeducciones', cellsformat: 'c2', width: 100 },
-                                { text: 'Gravado', datafield: 'dGravados', cellsformat: 'c2', width: 100 },
-                                { text: 'Excento', datafield: 'dExcento', cellsformat: 'c2', width: 100 }
-                            ]
-                        });
                 }
             });
 
@@ -505,16 +488,16 @@
                         for (i = 0; i < data.length; i++) {
                             if (data[i].iIdRenglon == 990) {
                                 TotalPercep = data[i].dSaldo
-                                $('#LaTotalPer').html(new Intl.NumberFormat("en-IN").format(TotalPercep));
+                                $('#LaTotalPer').html('$' + new Intl.NumberFormat("en-IN").format(TotalPercep));
                             }
                             if (data[i].iIdRenglon == 1990) {
 
                                 TotalDedu = data[i].dSaldo
-                                $('#LaTotalDedu').html(new Intl.NumberFormat("en-IN").format(TotalDedu));
+                                $('#LaTotalDedu').html('$' + new Intl.NumberFormat("en-IN").format(TotalDedu));
                             }
                         }
                         Total = TotalPercep - TotalDedu;
-                        $('#LaTotalNom').html(new Intl.NumberFormat("en-IN").format(Total));
+                        $('#LaTotalNom').html('$' + new Intl.NumberFormat("en-IN").format(Total));
 
                     }
                 }
@@ -565,8 +548,8 @@
         var nom = $('#jqxInput').jqxInput('val');
         NombreEmpleado = nom.label;
         separador = " ",
-        limite = 2,
-        arregloIdEmpleado = NombreEmpleado.split(separador, limite);
+            limite = 2,
+            arregloIdEmpleado = NombreEmpleado.split(separador, limite);
         IdEmpresa = EmpresaNom.value;
         anio = anoNom.value;
         Tipoperiodo = TipodePerdioRec.value;
@@ -623,7 +606,7 @@
         Tipoperiodo = TipodePerdioRec.value;
         datosPeriodo = dropPeriodoEmple.options[dropPeriodoEmple.selectedIndex].text;
         const dataSend = { IdEmpresas: IdEmpresa, EmpleId: arregloIdEmpleado[0], Perido: datosPeriodo, Anio: anio, Tipoperiodo: Tipoperiodo, iRecibo: 2 };
-        
+
         $.ajax({
             url: "../Empleados/FileRecibos",
             type: "POST",

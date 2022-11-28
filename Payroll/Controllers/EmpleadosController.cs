@@ -395,32 +395,48 @@ namespace Payroll.Controllers
                 {
                     for (int i = 0; i < LCRecibo.Count; i++)
                     {
+                        string Td = "";
                         if (LCRecibo[i].iIdRenglon == 1)
                         {
                             idRenglon = i;
                         }
 
+
                         TablaNominaBean ls = new TablaNominaBean();
                         {
+                            string idtr = i + "TbDedId";
+                            ls.TR = "<tr id=" + idtr + "></tr>";
                             ls.sConcepto = LCRecibo[i].iIdRenglon + " " + LCRecibo[i].sNombre_Renglon;
-
+                            Td = "<td>" + LCRecibo[i].iIdRenglon + " " + LCRecibo[i].sNombre_Renglon + "</td>";
                             if (LCRecibo[i].sValor == "Percepciones")
                             {
 
                                 ls.dPercepciones = LCRecibo[i].dSaldo.ToString("#.##");
+
                                 if (LCRecibo[i].iIdRenglon == 481 && Row481 > 0)
                                 {
                                     ls.dPercepciones = "0.00";
-                                };
+                                    Td = Td + "<td> " + "$0.00" + " </td>";
+                                }
+                                else
+                                {
+                                    Td = Td + "<td> " + string.Format("{0:C}", LCRecibo[i].dSaldo) + " </td>";
+                                }
 
+                                Td = Td + "<td> " + "$0.00" + " </td>";
                                 ls.dDeducciones = "0";
                             }
                             if (LCRecibo[i].sValor == "Deducciones")
                             {
+                                Td = Td + "<td> " + "0.00" + " </td>";
                                 if (LCRecibo[i].iIdRenglon == 1013)
                                 {
                                     LsTabla[idRenglon].dDeducciones = "-" + LCRecibo[i].dSaldo.ToString();
-
+                                    Td = Td + "<td> " + "-" + string.Format("{0:C}", LCRecibo[i].dSaldo) + " </td>";
+                                }
+                                else
+                                {
+                                    Td = Td + "<td> " + string.Format("{0:C}", LCRecibo[i].dSaldo) + " </td>";
                                 }
                                 ls.dPercepciones = "0";
                                 ls.dDeducciones = LCRecibo[i].dSaldo.ToString();
@@ -428,13 +444,27 @@ namespace Payroll.Controllers
 
                         }
 
-                        ls.dExcento = LCRecibo[i].dExcento.ToString("#.##");
-                        if (LCRecibo[i].dExcento < 1) { ls.dExcento = "0.00"; };
-                        ls.dGravados = LCRecibo[i].dGravado.ToString("#.##");
-                        if (LCRecibo[i].dGravado < 1) { ls.dGravados = "0.00"; };
+
+                        if (LCRecibo[i].dGravado < 1) { ls.dGravados = "0.00"; Td = Td + "<td> $0.00 </td>"; }
+                        else
+                        {
+                            ls.dGravados = LCRecibo[i].dGravado.ToString("#.##");
+                            Td = Td + "<td> " + string.Format("{0:C}", LCRecibo[i].dSaldo) + " </td>";
+                        }
+
+                        if (LCRecibo[i].dExcento < 1) { ls.dExcento = "0.00"; Td = Td + "<td> $0.00 </td>"; }
+                        else
+                        {
+                            ls.dExcento = LCRecibo[i].dExcento.ToString("#.##");
+                            Td = Td + "<td> " + string.Format("{0:C}", LCRecibo[i].dSaldo) + " </td>";
+                        }
+
 
                         ls.dSaldos = "0";
                         ls.dInformativos = "0";
+                        ls.TD = Td;
+
+
                         LsTabla.Add(ls);
 
                     }
@@ -442,7 +472,6 @@ namespace Payroll.Controllers
                 }
             }
             return Json(LsTabla);
-
         }
 
         [HttpPost]
