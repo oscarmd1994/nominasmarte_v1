@@ -54,6 +54,18 @@
      *  VARIABLES
      */
 
+    // Variables Domicilio Fiscal
+    const statedmf = document.getElementById('statedmf');
+    const btnVerifCodPostdmf = document.getElementById('btn-verif-codpostdmf');
+    const codpostdmf = document.getElementById('codpostdmf');
+    const citydmf = document.getElementById('citydmf');
+    const colonydmf = document.getElementById('colonydmf');
+    const streetdmf = document.getElementById('streetdmf');
+    const numberstdmf = document.getElementById('numberstdmf');
+    const numberintstdmf = document.getElementById('numberintstdmf');
+    const betstreet = document.getElementById('betstreet');
+    const betstreet2 = document.getElementById('betstreet2');
+
     let name       = document.getElementById('name');
     const state    = document.getElementById('state');
     const codpost  = document.getElementById('codpost');
@@ -78,9 +90,21 @@
         numberst.disabled = flag;
     }
 
+    fDisabledFieldsDMF = (flag) => {
+        colonydmf.disabled = flag;
+        streetdmf.disabled = flag;
+        numberstdmf.disabled = flag;
+        numberintstdmf.disabled = flag;
+        betstreet.disabled = flag;
+        betstreet2.disabled = flag;
+    }
+
     city.disabled = true;
     codpost.disabled = true;
     btnVerifCodPost.disabled = true;
+    citydmf.disabled = true;
+    btnVerifCodPostdmf.disabled = true;
+    codpostdmf.disabled = true;
 
     /*
      * FUNCION BLOQUEA CAMPOS DEPENDIENDO LA OPCIÓN
@@ -406,6 +430,50 @@
 
     floadstates();
 
+    // Funcion que carga los estados para la situación fiscal
+
+    fLoadStatesTaxResidence = (element) => {
+        try {
+            $.ajax({
+                url: "../Empleados/LoadStates",
+                type: "POST",
+                data: {},
+                contentType: "application/json; charset=utf-8",
+                success: (data) => {
+                    const quantity = data.length;
+                    let stated;
+                    for (t in getDataTabDataGen) {
+                        if (getDataTabDataGen[t].key === "general") {
+                            stated = getDataTabDataGen[t].data.state;
+                        }
+                    }
+                    if (quantity > 0) {
+                        for (i = 0; i < data.length; i++) {
+                            if (stated == data[i].iId) {
+                                element.innerHTML += `
+                                    <option selected value="${data[i].iId}">${data[i].sValor}</option>
+                                `;
+                            } else {
+                                element.innerHTML += `
+                                    <option value="${data[i].iId}">${data[i].sValor}</option>
+                                `;
+                            }
+                        }
+                    } else {
+                        fshowtypealert("Atencion!", "Ocurrio un problema al cargar el catalogo de Estados ", "warning", state, 0);
+                    }
+                }, error: (jqXHR, exception) => {
+                    fcaptureaerrorsajax(jqXHR, exception);
+                }
+            });
+        } catch (error) {
+
+        }
+    }
+
+    // Ejecución de la funcion que carga los estados del apartado domicilio fiscal
+    fLoadStatesTaxResidence(statedmf);
+
     fvalidatestate = () => {
         colony.innerHTML = '<option value="0">Selecciona</option>'
         fdisabledfields(true);
@@ -422,6 +490,25 @@
     }
 
     state.addEventListener('change', fvalidatestate);
+
+    // Ejecución de la funcion que activa y limpia campos de la dirección de domicilio fiscal
+    statedmf.addEventListener('change', () => {
+        colonydmf.innerHTML = '<option value="0">Selecciona</option>';
+        fDisabledFieldsDMF(true);
+        citydmf.value = "";
+        streetdmf.value = "";
+        numberstdmf.value = "";
+        numberintstdmf.value = "";
+        betstreet.value = "";
+        betstreet2.value = "";
+        codpostdmf.value = "";
+        if (statedmf.value != "0") {
+            codpostdmf.disabled = false;
+            setTimeout(() => { codpostdmf.focus() }, 500);
+        } else {
+            codpostdmf.disabled = true;
+        }
+    });
 
     fvalidatecodpost = () => {
         if (codpost.value.length == 5) {
@@ -442,6 +529,30 @@
     }
 
     codpost.addEventListener('keyup', fvalidatecodpost);
+
+    codpostdmf.addEventListener('keyup', () => {
+        if (codpostdmf.value.length == 5) {
+            btnVerifCodPostdmf.disabled = false;
+            btnVerifCodPostdmf.classList.add('btn-info');
+        } else {
+            btnVerifCodPostdmf.disabled = true;
+            btnVerifCodPostdmf.classList.remove('btn-info');
+            colonydmf.value      = "0";
+            colonydmf.disabled   = true;
+            citydmf.value        = "";
+            citydmf.disabled     = true;
+            streetdmf.value      = "";
+            streetdmf.disabled   = true;
+            numberstdmf.value    = "";
+            numberstdmf.disabled = true;
+            numberintstdmf.value = "";
+            numberintstdmf.disabled = true;
+            betstreet.value = "";
+            betstreet.disabled = true;
+            betstreet2.value = "";
+            betstreet2.disabled = true;
+        }
+    });
 
     fvalidatestatecodpost = (foc, paramstate) => {
         colony.innerHTML = "<option value='0'>Selecciona</option>";
@@ -515,6 +626,83 @@
 
     btnVerifCodPost.addEventListener('click', () => {
         fvalidatestatecodpost(1,0);
+    });
+
+    btnVerifCodPostdmf.addEventListener('click', () => {
+        //colony.innerHTML = "<option value='0'>Selecciona</option>";
+        let statesend = statedmf.value;
+        //if (paramstate != 0) {
+        //    statesend = paramstate;
+        //}
+        try {
+            if (codpostdmf.value.length === 5) {
+                document.getElementById('load-spinnerdmf').classList.remove('d-none');
+                btnVerifCodPostdmf.classList.add('d-none');
+                let flag = false;
+                setTimeout(() => {
+                    $.ajax({
+                        url: "../Empleados/LoadInformationHome",
+                        type: "POST",
+                        data: { codepost: codpostdmf.value, state: statesend },
+                        beforeSend: () => {
+                            fDisabledFieldsDMF(true);
+                        },
+                        success: (data) => {
+                            if (data.length > 0) {
+                                fDisabledFieldsDMF(false);
+                                let colonyd = "none";
+                                //for (t in getDataTabDataGen) {
+                                //    if (getDataTabDataGen[t].key === "general") {
+                                //        colonyd = getDataTabDataGen[t].data.colony;
+                                //    }
+                                //}
+                                for (i = 0; i < data.length; i++) {
+                                    citydmf.value = data[i].sCiudad;
+                                    if (data[i].sColonia != "") {
+                                        if (data[i].sColonia.toUpperCase() == colonyd.toUpperCase()) {
+                                            colonydmf.innerHTML += `<option selected value="${data[i].sColonia.toUpperCase()}">${data[i].sColonia}</option>`;
+                                        } else {
+                                            colonydmf.innerHTML += `<option value="${data[i].sColonia.toUpperCase()}">${data[i].sColonia}</option>`;
+                                        }
+                                    }
+                                }
+                                //if (foc == 1) {
+                                //    setTimeout(() => {
+                                //        colony.focus();
+                                //    }, 500);
+                                //}
+                            } else {
+                                Swal.fire({
+                                    title: "Atención",
+                                    text: "El código postal ingresado es incorrecto no pertenece al estado seleccionado",
+                                    icon: "warning",
+                                    showClass: { popup: 'animated fadeInDown faster' },
+                                    hideClass: { popup: 'animated fadeOutUp faster' },
+                                    confirmButtonText: "Aceptar", allowOutsideClick: false, allowEscapeKey: false, allowEnterKey: false,
+                                }).then((acepta) => {
+                                    setTimeout(() => { codpostdmf.focus(); }, 800)
+                                });
+                            }
+                            btnVerifCodPostdmf.classList.remove('d-none');
+                            document.getElementById('load-spinnerdmf').classList.add('d-none')
+                        }, error: (jqXHR, exception) => {
+                            fcaptureaerrorsajax(jqXHR, exception);
+                        }
+                    });
+                }, 1000);
+            } else {
+                Swal.fire({
+                    title: "Atención", text: "El código postal debe de contener 5 caracteres", icon: "warning",
+                    showClass: { popup: 'animated fadeInDown faster' },
+                    hideClass: { popup: 'animated fadeOutUp faster' },
+                    confirmButtonText: "Aceptar", allowOutsideClick: false, allowEscapeKey: false, allowEnterKey: false,
+                }).then((acepta) => {
+                    setTimeout(() => { codpostdmf.focus(); }, 800);
+                });
+            }
+        } catch (error) {
+
+        }
     });
 
     fvalidatelocalstorageinfdom = () => {

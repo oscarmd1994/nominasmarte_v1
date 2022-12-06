@@ -233,8 +233,8 @@
                                                 <input data-read autocomplete="off" title="Longitud 7 caracteres numericos" placeholder="Codigo postal" maxlength="7" type="text" id="codpost" class="form-control form-control-sm" />
                                             </div>
                                             <div class="offset-4 col-sm-8 mt-2">
-                                                <button btn-data-read class="btn btn-sm btn-block" id="btn-verif-codpost">
-                                                    Verificar
+                                                <button btn-data-read class="btn btn-sm" id="btn-verif-codpost">
+                                                    Validar CP
                                                 </button>
                                                 <div class="text-center mt-2 d-none" id="load-spinner">
                                                     <div class="spinner-border text-info" role="status">
@@ -279,6 +279,119 @@
                                             </label>
                                             <div class="col-sm-8">
                                                 <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="numberst" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4 border-left-primary p-3 rounded shadow border-right-primary">
+                                    <div class="col-md-12 mb-4">
+                                        <div class="text-left">
+                                            <h6 class="col-ico font-nav-child">
+                                                <b>
+                                                    <i class="fas fa-circle fa-sm mr-ico-05"></i>
+                                                    Dirección Domicilio Fiscal
+                                                </b>
+                                            </h6>
+                                            <hr />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="statedmf" class="col-sm-4 col-form-label font-labels" id="label-state">
+                                                Estado:
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <select slc-data-read="true" tp-select="Estado" class="form-control form-control-sm" id="statedmf">
+                                                    <option value="0">Selecciona</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="codpostdmf" class="col-sm-4 col-form-label font-labels" id="label-codpost">
+                                                C. postal:
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <input data-read autocomplete="off" title="Longitud 7 caracteres numericos" placeholder="Codigo postal" maxlength="7" type="text" id="codpostdmf" class="form-control form-control-sm" />
+                                            </div>
+                                            <div class="offset-4 col-sm-8 mt-2">
+                                                <button btn-data-read class="btn btn-sm" id="btn-verif-codpostdmf">
+                                                    Validar CP
+                                                </button>
+                                                <div class="text-center mt-2 d-none" id="load-spinnerdmf">
+                                                    <div class="spinner-border text-info" role="status">
+                                                        <span class="sr-only">Loading...</span>
+                                                    </div>
+                                                    <br />
+                                                    <span class="badge mt-3 badge-pill badge-info p-2">Validando CP...</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="citydmf" class="col-sm-4 col-form-label font-labels" id="label-city">
+                                                Municipio ó Ciudad:
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <input data-read placeholder="Ciudad" type="text" class="form-control form-control-sm" id="citydmf" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="colonydmf" class="col-sm-4 col-form-label font-labels" id="label-colony">
+                                                Colonia:
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <select slc-data-read="true" tp-select="Colonia" class="form-control form-control-sm" id="colonydmf">
+                                                    <option value="0">Selecciona</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label for="streetdmf" class="col-sm-4 col-form-label font-labels" id="label-street">
+                                                Calle:
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <input data-read autocomplete="off" placeholder="Calle" maxlength="50" type="text" id="streetdmf" class="form-control form-control-sm text-capitalize" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="numberstdmf" class="col-sm-4 col-form-label font-labels">
+                                                N. Exterior:
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="numberstdmf" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="numberintstdmf" class="col-sm-4 col-form-label font-labels">
+                                                N. Interior:
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="numberintstdmf" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="numberintstdmf" class="col-sm-4 col-form-label font-labels">
+                                                N. Interior:
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="numberintstdmf" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="betstreet" class="col-sm-4 col-form-label font-labels">
+                                                Entre Calle
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="betstreet" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="betstreet2" class="col-sm-4 col-form-label font-labels">
+                                                Y Calle
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="betstreet2" class="form-control form-control-sm" />
                                             </div>
                                         </div>
                                     </div>
@@ -351,8 +464,8 @@
                                             <span class="text">Continuar</span>
                                         </button>
                                         @*<button class="btn btn-block btn-light col-btn-login font-button" id="btn-save-data-gen">
-                                Continuar <i class="fas fa-arrow-right ml-ico-05"></i>
-                            </button>*@
+                    Continuar <i class="fas fa-arrow-right ml-ico-05"></i>
+                </button>*@
                                         <button btn-data-read type="button" data-dismiss="modal" class="btn btn-primary btn-block shadow d-none" id="btn-save-edit-data-gen">
                                             <span class="icon text-white-50 mr-2">
                                                 <i class="fas fa-edit"></i>
@@ -360,8 +473,8 @@
                                             <span class="text">Editar</span>
                                         </button>
                                         @*<button class="btn btn-block btn-outline-success font-button d-none" id="btn-save-edit-data-gen">
-                                Editar <i class="fas fa-edit ml-ico-05"></i>
-                            </button>*@
+                    Editar <i class="fas fa-edit ml-ico-05"></i>
+                </button>*@
                                     </div>
                                 </div>
                             </div>
@@ -4286,7 +4399,7 @@
 <script type="text/javascript" src="~/Scripts/ferros/errajax.js?n=2" defer></script>
 <script type="text/javascript" src="~/Scripts/main/main.js?n=7.2" defer></script>
 <script type="text/javascript" src="~/Scripts/main/animationsmain.js?n=3.6" defer></script>
-<script type="text/javascript" src="~/Scripts/main/loadcatalogsemployee.js?n=4.5" defer></script>
+<script type="text/javascript" src="~/Scripts/main/loadcatalogsemployee.js?n=4.7" defer></script>
 <script type="text/javascript" src="~/Scripts/main/puestos.js?n=2.4" defer></script>
 <script type="text/javascript" src="~/Scripts/main/positions.js?n=2.12" defer></script>
 <script type="text/javascript" src="~/Scripts/main/regionales.js?n=2" defer></script>

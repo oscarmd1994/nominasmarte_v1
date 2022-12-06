@@ -34,6 +34,9 @@
     const title = document.getElementById('title');
     const estciv = document.getElementById('estciv');
 
+    // Variables Domicilio Fiscal
+    const statedmf = document.getElementById('statedmf');
+
     const btnVerifCodPost = document.getElementById('btn-verif-codpost');
 
     // ** Funcion que deshabilita los inputs de domicilio  ** \\
@@ -99,6 +102,46 @@
     }
 
     floadstates();
+
+    // Función que carga los estados del domicilio fiscal
+    fLoadStateTaxResidence = () => {
+        try {
+            $.ajax({
+                url: "../Empleados/LoadStates",
+                type: "POST",
+                data: {},
+                contentType: "application/json; charset=utf-8",
+                success: (data) => {
+                    const quantity = data.length;
+                    let stated;
+                    //for (t in getDataTabDataGen) {
+                    //    if (getDataTabDataGen[t].key === "general") {
+                    //        stated = getDataTabDataGen[t].data.state;
+                    //    }
+                    //}
+                    if (quantity > 0) {
+                        for (i = 0; i < data.length; i++) {
+                            if (stated == data[i].iIdValor) {
+                                statedmf.innerHTML += `
+                                    <option selected value="${data[i].iIdValor}">${data[i].sValor}</option>
+                                `;
+                            } else {
+                                statedmf.innerHTML += `
+                                    <option value="${data[i].iIdValor}">${data[i].sValor}</option>
+                                `;
+                            }
+                        }
+                    }
+                }, error: (jqXHR, exception) => {
+                    fcaptureaerrorsajax(jqXHR, exception);
+                }
+            });
+        } catch (error) {
+
+        }
+    }
+    alert('test');
+    fLoadStateTaxResidence();
 
     state.addEventListener('change', () => {
         colony.innerHTML = '<option value="0">Selecciona</option>'
