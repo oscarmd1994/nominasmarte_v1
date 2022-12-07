@@ -444,7 +444,7 @@
                     let stated;
                     for (t in getDataTabDataGen) {
                         if (getDataTabDataGen[t].key === "general") {
-                            stated = getDataTabDataGen[t].data.state;
+                            stated = getDataTabDataGen[t].data.statedmf;
                         }
                     }
                     if (quantity > 0) {
@@ -628,12 +628,13 @@
         fvalidatestatecodpost(1,0);
     });
 
-    btnVerifCodPostdmf.addEventListener('click', () => {
-        //colony.innerHTML = "<option value='0'>Selecciona</option>";
+    fValidateStateCodPostDmf = (foc, paramstate) => {
+        colonydmf.innerHTML = "<option value='0'>Selecciona</option>";
         let statesend = statedmf.value;
-        //if (paramstate != 0) {
-        //    statesend = paramstate;
-        //}
+        if (paramstate != 0) {
+            statesend = paramstate;
+            btnVerifCodPostdmf.disabled = false;
+        }
         try {
             if (codpostdmf.value.length === 5) {
                 document.getElementById('load-spinnerdmf').classList.remove('d-none');
@@ -651,11 +652,11 @@
                             if (data.length > 0) {
                                 fDisabledFieldsDMF(false);
                                 let colonyd = "none";
-                                //for (t in getDataTabDataGen) {
-                                //    if (getDataTabDataGen[t].key === "general") {
-                                //        colonyd = getDataTabDataGen[t].data.colony;
-                                //    }
-                                //}
+                                for (t in getDataTabDataGen) {
+                                    if (getDataTabDataGen[t].key === "general") {
+                                        colonyd = getDataTabDataGen[t].data.colonydmf;
+                                    }
+                                }
                                 for (i = 0; i < data.length; i++) {
                                     citydmf.value = data[i].sCiudad;
                                     if (data[i].sColonia != "") {
@@ -666,11 +667,11 @@
                                         }
                                     }
                                 }
-                                //if (foc == 1) {
-                                //    setTimeout(() => {
-                                //        colony.focus();
-                                //    }, 500);
-                                //}
+                                if (foc == 1) {
+                                    setTimeout(() => {
+                                        colonydmf.focus();
+                                    }, 500);
+                                }
                             } else {
                                 Swal.fire({
                                     title: "Atención",
@@ -703,6 +704,10 @@
         } catch (error) {
 
         }
+    }
+
+    btnVerifCodPostdmf.addEventListener('click', () => {
+        fValidateStateCodPostDmf(1, 0);
     });
 
     fvalidatelocalstorageinfdom = () => {
@@ -728,6 +733,30 @@
     }
 
     fvalidatelocalstorageinfdom();
+
+    fvalidatelocalstorageinfdomdmf = () => {
+        let stateloc = 0;
+        let flag = false;
+        if (JSON.parse(localStorage.getItem("objectTabDataGen")) != null) {
+            for (dt in getDataTabDataGen) {
+                if (getDataTabDataGen[dt].data.colonydmf != "" && getDataTabDataGen[dt].data.streetdmf != ""
+                    && getDataTabDataGen[dt].data.codpostdmf != "") {
+                    stateloc = getDataTabDataGen[dt].data.statedmf;
+                    flag = true;
+                    break;
+                }
+            }
+        }
+        if (flag) {
+            fDisabledFieldsDMF(false);
+            codpostdmf.disabled = false;
+            fValidateStateCodPostDmf(0, stateloc);
+        } else {
+            fDisabledFieldsDMF(true);
+        }
+    }
+
+    fvalidatelocalstorageinfdomdmf();
 
     // FIN FUNCIONALIDADES ESTADOS \\
 

@@ -440,6 +440,16 @@
     const tipsan = document.getElementById('tipsan');
     const fecmat = document.getElementById('fecmat');
 
+    // Variables Domicilio Fiscal
+    const statedmf = document.getElementById('statedmf');
+    const codpostdmf = document.getElementById('codpostdmf');
+    const citydmf = document.getElementById('citydmf');
+    const colonydmf = document.getElementById('colonydmf');
+    const numberstdmf = document.getElementById('numberstdmf');
+    const numberintstdmf = document.getElementById('numberintstdmf');
+    const betstreet = document.getElementById('betstreet');
+    const betstreet2 = document.getElementById('betstreet2');
+
     /*
      * Variables de botones 
      */
@@ -454,7 +464,9 @@
         const dataSend = {
             name: name.value, apepat: apepat.value, apemat: apemat.value, sex: sex.value, estciv: estciv.value, fnaci: fnaci.value, lnaci: lnaci.value,
             title: title.value, nacion: nacion.value, state: state.value, codpost: codpost.value, city: city.value, colony: colony.value, street: street.value,
-            numberst: numberst.value, telfij: telfij.value, telmov: telmov.value, email: mailus.value, tipsan: tipsan.value, fecmat: fecmat.value
+            numberst: numberst.value, telfij: telfij.value, telmov: telmov.value, email: mailus.value, tipsan: tipsan.value, fecmat: fecmat.value,
+            statedmf: (statedmf.value == "") ? 0 : statedmf.value, codpostdmf: codpostdmf.value, citydmf: citydmf.value, colonydmf: colonydmf.value,
+            numberstdmf: numberstdmf.value, numberintstdmf: numberintstdmf.value, betstreet: betstreet.value, betstreet2: betstreet2.value
         };
         //console.log('Datos generales');
         //console.log(dataSend);

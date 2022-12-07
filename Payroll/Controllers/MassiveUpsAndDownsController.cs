@@ -1017,7 +1017,7 @@ namespace Payroll.Controllers
                                         if (numeroNomina != 0) {
                                             nominaF = numeroNomina;
                                         }
-                                        empleadosBean = empleadosDao.sp_Empleados_Insert_Empleado(nombre, paterno, materno, genero_id, estado_id, fechaNa, lugarNa, titulo_id, nacion_id.ToString(), estadod_id, codigop, ciudad, colonia, calle, numeroc, telefof, telefom, correoe, usuario_id, empresa, tiposan, fechama, numeroNomina);
+                                        empleadosBean = empleadosDao.sp_Empleados_Insert_Empleado(nombre, paterno, materno, genero_id, estado_id, fechaNa, lugarNa, titulo_id, nacion_id.ToString(), estadod_id, codigop, ciudad, colonia, calle, numeroc, telefof, telefom, correoe, usuario_id, empresa, tiposan, fechama, numeroNomina, 0, "", "", "", "", "", "", "");
                                         // Insertamos el registro en TEmpleado_imss
                                         imssBean = imssDao.sp_Imss_Insert_Imss(fechaei, regimss, rfcempl, curpemp, nivelestud, nivelsocio, keyFile, nombre, paterno, materno, fechaNa, empresa, nominaF);
                                         // Insertamos el registro en TEmpleado_nomina

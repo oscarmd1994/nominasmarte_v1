@@ -92,6 +92,17 @@ $(function () {
     const mailus = document.getElementById('mailus');
     const tipsan = document.getElementById('tipsan');
     const fecmat = document.getElementById('fecmat');
+
+    const statedmf = document.getElementById('statedmf');
+    const codpostdmf = document.getElementById('codpostdmf');
+    const citydmf = document.getElementById('citydmf');
+    const colonydmf = document.getElementById('colonydmf');
+    const streetdmf = document.getElementById('streetdmf');
+    const numberstdmf = document.getElementById('numberstdmf');
+    const numberintstdmf = document.getElementById('numberintstdmf');
+    const betstreet = document.getElementById('betstreet');
+    const betstreet2 = document.getElementById('betstreet2');
+
     const btnsaveeditdatagen = document.getElementById('btn-save-edit-data-gen');
 
 
@@ -462,6 +473,15 @@ $(function () {
                     mailus.value = getDataTabDataGen[i].data.mailus;
                     tipsan.value = getDataTabDataGen[i].data.tipsan;
                     fecmat.value = getDataTabDataGen[i].data.fecmat;
+                    statedmf.value = getDataTabDataGen[i].data.statedmf;
+                    codpostdmf.value = getDataTabDataGen[i].data.codpostdmf;
+                    citydmf.value = getDataTabDataGen[i].data.citydmf;
+                    colonydmf.value = getDataTabDataGen[i].data.colonydmf;
+                    streetdmf.value = getDataTabDataGen[i].data.streetdmf;
+                    numberstdmf.value = getDataTabDataGen[i].data.numberstdmf;
+                    numberintstdmf.value = getDataTabDataGen[i].data.numberintstdmf;
+                    betstreet.value = getDataTabDataGen[i].data.betstreet;
+                    betstreet2.value = getDataTabDataGen[i].data.betstreet2;
                 }
             }
             document.getElementById('icouser').classList.remove('d-none');
@@ -862,7 +882,12 @@ $(function () {
                     colony: colony.value, street: street.value,
                     numberst: numberst.value, telfij: telfij.value,
                     telmov: telmov.value, mailus: mailus.value,
-                    tipsan: tipsan.value, fecmat: fecmat.value
+                    tipsan: tipsan.value, fecmat: fecmat.value,
+                    statedmf: statedmf.value, codpostdmf: codpostdmf.value,
+                    citydmf: citydmf.value, colonydmf: colonydmf.value,
+                    streetdmf: streetdmf.value, numberstdmf: numberstdmf.value,
+                    numberintstdmf: numberintstdmf.value, betstreet: betstreet.value,
+                    betstreet2: betstreet2.value
                 }
             };
             if (localStorage.getItem("modesave") == null) {

@@ -132,7 +132,7 @@ namespace Payroll.Controllers
 
         //Guarda los datos generales del empleado
         [HttpPost]
-        public JsonResult DataGeneral(string name, string apepat, string apemat, int sex, int estciv, string fnaci, string lnaci, int title, string nacion, int state, string codpost, string city, string colony, string street, string numberst, string telfij, string telmov, string email, string tipsan, string fecmat)
+        public JsonResult DataGeneral(string name, string apepat, string apemat, int sex, int estciv, string fnaci, string lnaci, int title, string nacion, int state, string codpost, string city, string colony, string street, string numberst, string telfij, string telmov, string email, string tipsan, string fecmat, int statedmf, string codpostdmf, string citydmf, string colonydmf, string numberstdmf, string numberintstdmf, string betstreet, string betstreet2)
         {
             Boolean flag         = false;
             String  messageError = "none";
@@ -149,7 +149,7 @@ namespace Payroll.Controllers
             try {
                 int usuario     = Convert.ToInt32(Session["iIdUsuario"].ToString());
                 int empresa     = int.Parse(Session["IdEmpresa"].ToString());
-                addEmpleadoBean = empleadoDao.sp_Empleados_Insert_Empleado(name, apepat, apemat, sex, estciv, convertFNaci, lnaci, title, nacion, state, codpost, city, colony, street, numberst, telfij, telmov, email, usuario, empresa, tipsan, convertFMatr, 0);
+                addEmpleadoBean = empleadoDao.sp_Empleados_Insert_Empleado(name, apepat, apemat, sex, estciv, convertFNaci, lnaci, title, nacion, state, codpost, city, colony, street, numberst, telfij, telmov, email, usuario, empresa, tipsan, convertFMatr, 0, statedmf, codpostdmf, citydmf, colonydmf, numberstdmf, numberintstdmf, betstreet, betstreet2);
             } catch (Exception exc) {
                 flag         = false;
                 messageError = exc.Message.ToString();

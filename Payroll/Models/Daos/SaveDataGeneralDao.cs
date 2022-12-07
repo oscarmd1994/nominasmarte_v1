@@ -211,7 +211,7 @@ namespace Payroll.Models.Daos
             return employeeBean;
         }
 
-        public EmpleadosBean sp_Empleados_Insert_Empleado(string name, string apepat, string apemat, int sex, int estciv, string fnaci, string lnaci, int title, string nacion, int state, string codpost, string city, string colony, string street, string numberst, string telfij, string telmov, string email, int usuario, int keyemp, string tipsan, string fecmat, int keyEmployee)
+        public EmpleadosBean sp_Empleados_Insert_Empleado(string name, string apepat, string apemat, int sex, int estciv, string fnaci, string lnaci, int title, string nacion, int state, string codpost, string city, string colony, string street, string numberst, string telfij, string telmov, string email, int usuario, int keyemp, string tipsan, string fecmat, int keyEmployee, int statedmf, string codpostdmf, string citydmf, string colonydmf, string numberstdmf, string numberintstdmf, string betstreet, string betstreet2)
         {
             EmpleadosBean empleadoBean = new EmpleadosBean();
             try
@@ -244,6 +244,16 @@ namespace Payroll.Models.Daos
                 cmd.Parameters.Add(new SqlParameter("@ctrlFechaMatrimonio", fecmat));
                 cmd.Parameters.Add(new SqlParameter("@ctrlUsuario", usuario));
                 cmd.Parameters.Add(new SqlParameter("@ctrlIdEmpresa", keyemp));
+                cmd.Parameters.Add(new SqlParameter("@ctrlEstadodmf", statedmf));
+                cmd.Parameters.Add(new SqlParameter("@ctrlCodigoPostaldmf", codpostdmf));
+                cmd.Parameters.Add(new SqlParameter("@ctrlCiudaddmf", citydmf));
+                cmd.Parameters.Add(new SqlParameter("@ctrlColoniadmf", colonydmf));
+                cmd.Parameters.Add(new SqlParameter("@ctrlNumeroExtdmf", numberstdmf));
+                cmd.Parameters.Add(new SqlParameter("@ctrlNumeroIntdmf", numberintstdmf));
+                cmd.Parameters.Add(new SqlParameter("@ctrlEntreCalledmf", betstreet));
+                cmd.Parameters.Add(new SqlParameter("@ctrlYCalledmf", betstreet2));
+
+
                 SqlCommand validate = new SqlCommand("sp_Empleados_Validate_Empleado", this.conexion)
                 {
                     CommandType = CommandType.StoredProcedure
