@@ -952,7 +952,12 @@ $(function () {
                 colony: colony.value, street: street.value,
                 numberst: numberst.value, telfij: telfij.value,
                 telmov: telmov.value, mailus: mailus.value,
-                tipsan: tipsan.value, fecmat: fecmat.value
+                tipsan: tipsan.value, fecmat: fecmat.value,
+                statedmf: statedmf.value, codpostdmf: codpostdmf.value,
+                citydmf: citydmf.value, colonydmf: colonydmf.value,
+                streetdmf: streetdmf.value, numberstdmf: numberstdmf.value,
+                numberintstdmf: numberintstdmf.value, betstreet: betstreet.value,
+                betstreet2: betstreet2.value
             }
         };
         document.getElementById('icouser').classList.remove('d-none');
@@ -1358,12 +1363,17 @@ $(function () {
                         numberstdmf.value = data.Datos.iNExteriorDmf;
                         numberintstdmf.value = data.Datos.iNInteriorDmf;
                         fvalidatestatecodpost(0, data.Datos.iEstado_id);
+                        fValidateStateCodPostDmf(0, data.Datos.iCgEstadoDmf);
                         setTimeout(() => {
                             colony.value = data.Datos.sColonia.toUpperCase();
                             floaddatatabimss(paramid);
                             flocalstodatatabimss();
                             flocalstodatatabgen();
                         }, 2000);
+                        console.log('Coloniadmf: ', data.Datos.sColoniaDmf.toUpperCase());
+                        setTimeout(() => {
+                            colonydmf.value = data.Datos.sColoniaDmf.toUpperCase();
+                        }, 4000);
                     } else {
                         document.getElementById('div-most-alert-data-gen').innerHTML = `
                             <div class="alert alert-danger text-center" role="alert">
@@ -1568,6 +1578,8 @@ $(function () {
     /* FUNCION QUE GUARDA LA EDICION DE LOS DATOS GENERALES DEL EMPLEADO */
     fsaveeditdatagen = () => {
         try {
+            const checkDMF = document.getElementById('checkDirectionDMF');
+            const directionDMF = (checkDMF.checked) ? true : false;
             const dataSendGenEdit = {
                 name: name.value, apepat: apepat.value, apemat: apemat.value, sex: sex.value,
                 estciv: estciv.value, fnaci: fnaci.value, lnaci: lnaci.value,
@@ -1575,7 +1587,11 @@ $(function () {
                 codpost: codpost.value,
                 city: city.value, colony: colony.value, street: street.value, numberst: numberst.value,
                 telfij: telfij.value, telmov: telmov.value, email: mailus.value,
-                fecmat: fecmat.value, tipsan: tipsan.value, clvemp: clvemp.value
+                fecmat: fecmat.value, tipsan: tipsan.value, clvemp: clvemp.value,
+                statedmf: (statedmf.value == "") ? 0 : statedmf.value, codpostdmf: codpostdmf.value, citydmf: citydmf.value, colonydmf: colonydmf.value,
+                numberstdmf: numberstdmf.value, numberintstdmf: numberintstdmf.value, betstreet: betstreet.value, betstreet2: betstreet2.value, directionDMF: directionDMF,
+                streetdmf: streetdmf.value
+
             };
             let validatedatagen = 0;
             const arrInput = [name, apepat, sex, estciv, fnaci, lnaci, title, nacion, state];

@@ -144,7 +144,7 @@ namespace Payroll.Models.Daos
 
     public class EditEmpleadoDao : Conexion
     {
-        public EmpleadosBean sp_Empleados_Update_Empleado(string name, string apepat, string apemat, int sex, int estciv, string fnaci, string lnaci, int title, int nacion, int state, string codpost, string city, string colony, string street, string numberst, string telfij, string telmov, string email, string fecmat, string tipsan, int clvemp, int keyBusiness, int keyUser)
+        public EmpleadosBean sp_Empleados_Update_Empleado(string name, string apepat, string apemat, int sex, int estciv, string fnaci, string lnaci, int title, int nacion, int state, string codpost, string city, string colony, string street, string numberst, string telfij, string telmov, string email, string fecmat, string tipsan, int clvemp, int keyBusiness, int keyUser, int statedmf, string codpostdmf, string citydmf, string colonydmf, string numberstdmf, string numberintstdmf, string betstreet, string betstreet2, string streetdmf)
         {
             EmpleadosBean empleadoBean = new EmpleadosBean();
             try
@@ -177,6 +177,15 @@ namespace Payroll.Models.Daos
                 cmd.Parameters.Add(new SqlParameter("@ctrlIdEmpleado", clvemp));
                 cmd.Parameters.Add(new SqlParameter("@ctrlIdEmpresa", keyBusiness));
                 cmd.Parameters.Add(new SqlParameter("@ctrlUsuarioModifica", keyUser));
+                cmd.Parameters.Add(new SqlParameter("@ctrlEstadodmf", statedmf));
+                cmd.Parameters.Add(new SqlParameter("@ctrlCodigoPostaldmf", codpostdmf));
+                cmd.Parameters.Add(new SqlParameter("@ctrlCiudaddmf", citydmf));
+                cmd.Parameters.Add(new SqlParameter("@ctrlColoniadmf", colonydmf));
+                cmd.Parameters.Add(new SqlParameter("@ctrlNumeroExtdmf", numberstdmf));
+                cmd.Parameters.Add(new SqlParameter("@ctrlNumeroIntdmf", numberintstdmf));
+                cmd.Parameters.Add(new SqlParameter("@ctrlEntreCalledmf", betstreet));
+                cmd.Parameters.Add(new SqlParameter("@ctrlYCalledmf", betstreet2));
+                cmd.Parameters.Add(new SqlParameter("@ctrlCalledmf", streetdmf));
                 if (cmd.ExecuteNonQuery() > 0)
                 {
                     empleadoBean.sMensaje = "success";

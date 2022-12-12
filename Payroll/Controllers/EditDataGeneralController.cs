@@ -61,7 +61,7 @@ namespace Payroll.Controllers
         // Edicion de los datos generales del empleados
 
         [HttpPost]
-        public JsonResult EditDataGeneral(string name, string apepat, string apemat, int sex, int estciv, string fnaci, string lnaci, int title, int nacion, int state, string codpost, string city, string colony, string street, string numberst, string telfij, string telmov, string email, string tipsan, string fecmat, int clvemp)
+        public JsonResult EditDataGeneral(string name, string apepat, string apemat, int sex, int estciv, string fnaci, string lnaci, int title, int nacion, int state, string codpost, string city, string colony, string street, string numberst, string telfij, string telmov, string email, string tipsan, string fecmat, int clvemp, int statedmf, string codpostdmf, string citydmf, string colonydmf, string numberstdmf, string numberintstdmf, string betstreet, string betstreet2, bool directionDMF, string streetdmf)
         {
             Boolean flag         = false;
             String  messageError = "none";
@@ -75,7 +75,7 @@ namespace Payroll.Controllers
             try {
                 int keyBusiness = Convert.ToInt32(Session["IdEmpresa"]);
                 int usuario = Convert.ToInt32(Session["iIdUsuario"].ToString());
-                employeeBean = editEmployeeDao.sp_Empleados_Update_Empleado(name, apepat, apemat, sex, estciv, convertFNaci, lnaci, title, nacion, state, codpost, city, colony, street, numberst, telfij, telmov, email, convertFMatr, tipsan, clvemp, keyBusiness, usuario);
+                employeeBean = editEmployeeDao.sp_Empleados_Update_Empleado(name, apepat, apemat, sex, estciv, convertFNaci, lnaci, title, nacion, state, codpost, city, colony, street, numberst, telfij, telmov, email, convertFMatr, tipsan, clvemp, keyBusiness, usuario, statedmf, codpostdmf, citydmf, colonydmf, numberstdmf, numberintstdmf, betstreet, betstreet2, streetdmf);
                 if (employeeBean.sMensaje != "success") {
                     messageError = employeeBean.sMensaje;
                 }

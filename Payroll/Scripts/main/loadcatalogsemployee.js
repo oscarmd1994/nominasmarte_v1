@@ -629,6 +629,7 @@
     });
 
     fValidateStateCodPostDmf = (foc, paramstate) => {
+        console.log('Estado: ', paramstate);
         colonydmf.innerHTML = "<option value='0'>Selecciona</option>";
         let statesend = statedmf.value;
         if (paramstate != 0) {
@@ -649,14 +650,20 @@
                             fDisabledFieldsDMF(true);
                         },
                         success: (data) => {
+                            console.log(data);
                             if (data.length > 0) {
                                 fDisabledFieldsDMF(false);
                                 let colonyd = "none";
                                 for (t in getDataTabDataGen) {
                                     if (getDataTabDataGen[t].key === "general") {
-                                        colonyd = getDataTabDataGen[t].data.colonydmf;
+                                        console.log('Valor: ', getDataTabDataGen[t].data.colonydmf);
+                                        console.log('Valor: ', String(getDataTabDataGen[t].data.colonydmf));
+                                        if (String(getDataTabDataGen[t].data.colonydmf) != 'undefined') {
+                                            colonyd = getDataTabDataGen[t].data.colonydmf;
+                                        }
                                     }
                                 }
+                                console.log('colonia ', colonyd);
                                 for (i = 0; i < data.length; i++) {
                                     citydmf.value = data[i].sCiudad;
                                     if (data[i].sColonia != "") {
