@@ -201,6 +201,16 @@ namespace Payroll.Models.Daos
                     empleadoBean.sCorreoElectronico = (String.IsNullOrEmpty(data["Correo_Electronico"].ToString())) ? "" : data["Correo_Electronico"].ToString();
                     empleadoBean.sFechaMatrimonio = (String.IsNullOrEmpty(data["Fecha_Matrimonio"].ToString())) ? "" : DateTime.Parse(data["Fecha_Matrimonio"].ToString()).ToString("yyyy-MM-dd");
                     empleadoBean.sTipoSangre = (String.IsNullOrEmpty(data["Tipo_Sangre"].ToString())) ? "" : data["Tipo_Sangre"].ToString();
+                    empleadoBean.iCgEstadoDmf = (data["Cg_Estado_Domicilio_Fiscal_id"].ToString().Length != 0) ? Convert.ToInt32(data["Cg_Estado_Domicilio_Fiscal_id"]) : 0;
+                    empleadoBean.sCodigoPostalDmf = (String.IsNullOrEmpty(data["Codigo_Postal_Domicilio_Fiscal"].ToString())) ? "" : data["Codigo_Postal_Domicilio_Fiscal"].ToString();
+                    empleadoBean.sCiudadDmf = (String.IsNullOrEmpty(data["Ciudad_Domicilio_Fiscal"].ToString())) ? "" : data["Ciudad_Domicilio_Fiscal"].ToString();
+                    empleadoBean.sColoniaDmf = (String.IsNullOrEmpty(data["Colonia_Domicilio_Fiscal"].ToString())) ? "" : data["Colonia_Domicilio_Fiscal"].ToString();
+                    empleadoBean.sCalleDmf = (String.IsNullOrEmpty(data["Calle_Domicilio_Fiscal"].ToString())) ? "" : data["Calle_Domicilio_Fiscal"].ToString();
+                    empleadoBean.iNExteriorDmf = (data["NExterior_Domicilio_Fiscal"].ToString().Length != 0) ? Convert.ToInt32(data["NExterior_Domicilio_Fiscal"]) : 0;
+                    empleadoBean.iNInteriorDmf = (data["NInterior_Domicilio_Fiscal"].ToString().Length != 0) ? Convert.ToInt32(data["NInterior_Domicilio_Fiscal"]) : 0;
+                    empleadoBean.sEntreCalleDmf = (String.IsNullOrEmpty(data["EntreCalle_Domicilio_Fiscal"].ToString())) ? "" : data["EntreCalle_Domicilio_Fiscal"].ToString();
+                    empleadoBean.sYCalleDmf = (String.IsNullOrEmpty(data["YCalle_Domicilio_Fiscal"].ToString())) ? "" : data["YCalle_Domicilio_Fiscal"].ToString();
+
                     empleadoBean.sMensaje = "success";
                 }
                 else

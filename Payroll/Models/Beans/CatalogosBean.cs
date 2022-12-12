@@ -266,6 +266,15 @@ namespace Payroll.Models.Beans
         public int iNumeroNomina { get; set; }
         public string sMensaje { get; set; }
         public int iNuevoNumeroNomina { get; set; }
+        public int iCgEstadoDmf { get; set; }
+        public string sCodigoPostalDmf { get; set; }
+        public string sCiudadDmf { get; set; }
+        public string sColoniaDmf { get; set; }
+        public string sCalleDmf { get; set; }
+        public int iNExteriorDmf { get; set; }
+        public int iNInteriorDmf { get; set; }
+        public string sEntreCalleDmf { get; set; }
+        public string sYCalleDmf { get; set; }
     }
     public class ImssBean
     {

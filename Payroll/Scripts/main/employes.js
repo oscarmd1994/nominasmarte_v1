@@ -718,6 +718,17 @@ $(function () {
     const fecmat = document.getElementById('fecmat');
     const btnsaveeditdatagen = document.getElementById('btn-save-edit-data-gen');
     const btnsavedatagen = document.getElementById('btn-save-data-gen');
+
+    const statedmf = document.getElementById('statedmf');
+    const codpostdmf = document.getElementById('codpostdmf');
+    const citydmf = document.getElementById('citydmf');
+    const colonydmf = document.getElementById('colonydmf');
+    const streetdmf = document.getElementById('streetdmf');
+    const numberstdmf = document.getElementById('numberstdmf');
+    const numberintstdmf = document.getElementById('numberintstdmf');
+    const betstreet = document.getElementById('betstreet');
+    const betstreet2 = document.getElementById('betstreet2');
+
     /*
      * VARIABLES IMSS 
      */
@@ -1336,7 +1347,16 @@ $(function () {
                         telmov.value   = data.Datos.sTelefonoMovil;
                         mailus.value   = data.Datos.sCorreoElectronico;
                         tipsan.value   = data.Datos.sTipoSangre;
-                        fecmat.value   = data.Datos.sFechaMatrimonio;
+                        fecmat.value = data.Datos.sFechaMatrimonio;
+                        // Dirección Domicilio Fiscal
+                        statedmf.value = data.Datos.iCgEstadoDmf;
+                        codpostdmf.value = data.Datos.sCodigoPostalDmf;
+                        citydmf.value = data.Datos.sCiudadDmf;
+                        streetdmf.value = data.Datos.sCalleDmf;
+                        betstreet.value = data.Datos.sEntreCalleDmf;
+                        betstreet2.value = data.Datos.sYCalleDmf;
+                        numberstdmf.value = data.Datos.iNExteriorDmf;
+                        numberintstdmf.value = data.Datos.iNInteriorDmf;
                         fvalidatestatecodpost(0, data.Datos.iEstado_id);
                         setTimeout(() => {
                             colony.value = data.Datos.sColonia.toUpperCase();

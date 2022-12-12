@@ -211,7 +211,7 @@ namespace Payroll.Models.Daos
             return employeeBean;
         }
 
-        public EmpleadosBean sp_Empleados_Insert_Empleado(string name, string apepat, string apemat, int sex, int estciv, string fnaci, string lnaci, int title, string nacion, int state, string codpost, string city, string colony, string street, string numberst, string telfij, string telmov, string email, int usuario, int keyemp, string tipsan, string fecmat, int keyEmployee, int statedmf, string codpostdmf, string citydmf, string colonydmf, string numberstdmf, string numberintstdmf, string betstreet, string betstreet2)
+        public EmpleadosBean sp_Empleados_Insert_Empleado(string name, string apepat, string apemat, int sex, int estciv, string fnaci, string lnaci, int title, string nacion, int state, string codpost, string city, string colony, string street, string numberst, string telfij, string telmov, string email, int usuario, int keyemp, string tipsan, string fecmat, int keyEmployee, int statedmf, string codpostdmf, string citydmf, string colonydmf, string numberstdmf, string numberintstdmf, string betstreet, string betstreet2, string streetdmf)
         {
             EmpleadosBean empleadoBean = new EmpleadosBean();
             try
@@ -252,8 +252,7 @@ namespace Payroll.Models.Daos
                 cmd.Parameters.Add(new SqlParameter("@ctrlNumeroIntdmf", numberintstdmf));
                 cmd.Parameters.Add(new SqlParameter("@ctrlEntreCalledmf", betstreet));
                 cmd.Parameters.Add(new SqlParameter("@ctrlYCalledmf", betstreet2));
-
-
+                cmd.Parameters.Add(new SqlParameter("@ctrlCalledmf", streetdmf));
                 SqlCommand validate = new SqlCommand("sp_Empleados_Validate_Empleado", this.conexion)
                 {
                     CommandType = CommandType.StoredProcedure
