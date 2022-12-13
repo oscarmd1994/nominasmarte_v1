@@ -74,6 +74,15 @@ namespace Payroll.Controllers
             }
             try {
                 int keyBusiness = Convert.ToInt32(Session["IdEmpresa"]);
+                if (directionDMF)
+                {
+                    statedmf = state;
+                    codpostdmf = codpost;
+                    citydmf = city;
+                    colonydmf = colony;
+                    streetdmf = street;
+
+                }
                 int usuario = Convert.ToInt32(Session["iIdUsuario"].ToString());
                 employeeBean = editEmployeeDao.sp_Empleados_Update_Empleado(name, apepat, apemat, sex, estciv, convertFNaci, lnaci, title, nacion, state, codpost, city, colony, street, numberst, telfij, telmov, email, convertFMatr, tipsan, clvemp, keyBusiness, usuario, statedmf, codpostdmf, citydmf, colonydmf, numberstdmf, numberintstdmf, betstreet, betstreet2, streetdmf);
                 if (employeeBean.sMensaje != "success") {

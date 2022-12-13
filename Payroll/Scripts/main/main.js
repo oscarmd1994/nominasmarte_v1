@@ -107,7 +107,7 @@ $(function () {
 
 
     const vardatagen = [clvemp, name, apep, apem, fnaci, lnaci, title, sex, nacion, estciv, codpost, state, city, colony, street, numberst,
-        telfij, telmov, mailus, tipsan, fecmat];
+        telfij, telmov, mailus, tipsan, fecmat, statedmf, codpostdmf, citydmf, colonydmf, streetdmf, numberstdmf, numberintstdmf, betstreet, betstreet2];
 
     fclearfieldsvar1 = () => {
         for (let i = 0; i < vardatagen.length; i++) {
@@ -643,6 +643,8 @@ $(function () {
         document.getElementById('icouser').classList.add('d-none');
         document.getElementById('nameuser').textContent = '';
         colony.innerHTML = "<option value='0'>Selecciona</option>";
+        colonydmf.innerHTML = "<option value='0'>Selecciona</option>";
+        //statedmf.value = "0"
         codpost.disabled = true;
         colony.disabled = true;
         street.disabled = true;
