@@ -88,15 +88,19 @@
         colony.disabled = flag;
         street.disabled = flag;
         numberst.disabled = flag;
+        numberstdmf.disabled = flag;
+        numberintstdmf.disabled = flag;
+        betstreet.disabled = flag;
+        betstreet2.disabled = flag;
     }
 
     fDisabledFieldsDMF = (flag) => {
         colonydmf.disabled = flag;
         streetdmf.disabled = flag;
-        numberstdmf.disabled = flag;
-        numberintstdmf.disabled = flag;
-        betstreet.disabled = flag;
-        betstreet2.disabled = flag;
+        //numberstdmf.disabled = flag;
+        //numberintstdmf.disabled = flag;
+        //betstreet.disabled = flag;
+        //betstreet2.disabled = flag;
     }
 
     city.disabled = true;
@@ -105,6 +109,29 @@
     citydmf.disabled = true;
     btnVerifCodPostdmf.disabled = true;
     codpostdmf.disabled = true;
+
+    const checkCopyDmf = document.getElementById('checkDirectionDMF');
+
+    checkCopyDmf.addEventListener('change', () => {
+        if (checkCopyDmf.checked) {
+            statedmf.value = state.value;
+            codpostdmf.value = codpost.value;
+            btnVerifCodPostdmf.disabled = false;
+            setTimeout(() => { btnVerifCodPostdmf.click(); }, 500);
+            setTimeout(() => { citydmf.value = city.value; colonydmf.value = colony.value; colonydmf.disabled = true; streetdmf.disabled = true; }, 3500);
+            streetdmf.value = street.value;
+            statedmf.disabled   = true;
+            codpostdmf.disabled = true;
+            citydmf.disabled   = true;
+        } else {
+            statedmf.value = "0";
+            statedmf.disabled = false;
+            codpostdmf.value = "";
+            colonydmf.innerHTML = '<option value="0">Selecciona</option>';
+            btnVerifCodPostdmf.disabled = true;
+            fDisabledFieldsDMF(true);
+        }
+    });
 
     /*
      * FUNCION BLOQUEA CAMPOS DEPENDIENDO LA OPCIÓN
@@ -480,7 +507,11 @@
         city.value     = "";
         street.value   = "";
         numberst.value = "";
-        codpost.value  = "";
+        codpost.value = "";
+        numberstdmf.value = "";
+        numberintstdmf.value = "";
+        betstreet.value = "";
+        betstreet2.value = "";
         if (state.value != "0") {
             codpost.disabled = false;
             setTimeout(() => { codpost.focus() }, 500);
@@ -497,10 +528,10 @@
         fDisabledFieldsDMF(true);
         citydmf.value = "";
         streetdmf.value = "";
-        numberstdmf.value = "";
-        numberintstdmf.value = "";
-        betstreet.value = "";
-        betstreet2.value = "";
+        //numberstdmf.value = "";
+        //numberintstdmf.value = "";
+        //betstreet.value = "";
+        //betstreet2.value = "";
         codpostdmf.value = "";
         if (statedmf.value != "0") {
             codpostdmf.disabled = false;
@@ -525,6 +556,14 @@
             street.disabled   = true;
             numberst.value    = "";
             numberst.disabled = true;
+            numberstdmf.value = "";
+            numberstdmf.disabled = true;
+            numberintstdmf.value = "";
+            numberintstdmf.disabled = true;
+            betstreet.value = "";
+            betstreet.disabled = true;
+            betstreet2.value = "";
+            betstreet2.disabled = true;
         }
     }
 
@@ -543,14 +582,14 @@
             citydmf.disabled     = true;
             streetdmf.value      = "";
             streetdmf.disabled   = true;
-            numberstdmf.value    = "";
-            numberstdmf.disabled = true;
-            numberintstdmf.value = "";
-            numberintstdmf.disabled = true;
-            betstreet.value = "";
-            betstreet.disabled = true;
-            betstreet2.value = "";
-            betstreet2.disabled = true;
+            //numberstdmf.value    = "";
+            //numberstdmf.disabled = true;
+            //numberintstdmf.value = "";
+            //numberintstdmf.disabled = true;
+            //betstreet.value = "";
+            //betstreet.disabled = true;
+            //betstreet2.value = "";
+            //betstreet2.disabled = true;
         }
     });
 

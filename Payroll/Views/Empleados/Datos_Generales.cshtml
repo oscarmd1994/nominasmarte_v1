@@ -253,8 +253,6 @@
                                                 <input data-read placeholder="Ciudad" type="text" class="form-control form-control-sm" id="city" />
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
                                         <div class="form-group row">
                                             <label for="colony" class="col-sm-4 col-form-label font-labels" id="label-colony">
                                                 Colonia:
@@ -273,12 +271,54 @@
                                                 <input data-read autocomplete="off" placeholder="Calle" maxlength="50" type="text" id="street" class="form-control form-control-sm text-capitalize" />
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">                                        
                                         <div class="form-group row">
                                             <label for="numberst" class="col-sm-4 col-form-label font-labels">
                                                 N. calle:
                                             </label>
                                             <div class="col-sm-8">
                                                 <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="numberst" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="numberstdmf" class="col-sm-4 col-form-label font-labels">
+                                                N. Exterior:
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="numberstdmf" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="numberintstdmf" class="col-sm-4 col-form-label font-labels">
+                                                N. Interior:
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="numberintstdmf" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="betstreet" class="col-sm-4 col-form-label font-labels">
+                                                Entre Calle
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="betstreet" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="betstreet2" class="col-sm-4 col-form-label font-labels">
+                                                Y Calle
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="betstreet2" class="form-control form-control-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="checkDirectionDMF">
+                                                <label class="form-check-label" for="checkDirectionDMF">
+                                                    Usar como direccion fiscal
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
@@ -293,15 +333,7 @@
                                                 </b>
                                             </h6>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6 mb-2">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="checkDirectionDMF">
-                                            <label class="form-check-label" for="checkDirectionDMF">
-                                                Usar la dirección anterior
-                                            </label>
-                                        </div> 
-                                    </div>
+                                    </div>                                    
                                     <div class="col-md-12">
                                         <hr />
                                     </div>
@@ -343,7 +375,9 @@
                                             <div class="col-sm-8">
                                                 <input data-read placeholder="Ciudad" type="text" class="form-control form-control-sm" id="citydmf" />
                                             </div>
-                                        </div>
+                                        </div>                                        
+                                    </div>
+                                    <div class="col-md-6">
                                         <div class="form-group row">
                                             <label for="colonydmf" class="col-sm-4 col-form-label font-labels" id="label-colony">
                                                 Colonia:
@@ -354,46 +388,12 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
                                         <div class="form-group row">
                                             <label for="streetdmf" class="col-sm-4 col-form-label font-labels" id="label-streetdmf">
                                                 Calle:
                                             </label>
                                             <div class="col-sm-8">
                                                 <input data-read autocomplete="off" placeholder="Calle" maxlength="50" type="text" id="streetdmf" class="form-control form-control-sm text-capitalize" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="numberstdmf" class="col-sm-4 col-form-label font-labels">
-                                                N. Exterior:
-                                            </label>
-                                            <div class="col-sm-8">
-                                                <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="numberstdmf" class="form-control form-control-sm" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="numberintstdmf" class="col-sm-4 col-form-label font-labels">
-                                                N. Interior:
-                                            </label>
-                                            <div class="col-sm-8">
-                                                <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="numberintstdmf" class="form-control form-control-sm" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="betstreet" class="col-sm-4 col-form-label font-labels">
-                                                Entre Calle
-                                            </label>
-                                            <div class="col-sm-8">
-                                                <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="betstreet" class="form-control form-control-sm" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="betstreet2" class="col-sm-4 col-form-label font-labels">
-                                                Y Calle
-                                            </label>
-                                            <div class="col-sm-8">
-                                                <input data-read autocomplete="off" title="Longitud 5 caracteres numericos." placeholder="Numero de calle" maxlength="10" type="text" id="betstreet2" class="form-control form-control-sm" />
                                             </div>
                                         </div>
                                     </div>
@@ -4401,7 +4401,7 @@
 <script type="text/javascript" src="~/Scripts/ferros/errajax.js?n=2" defer></script>
 <script type="text/javascript" src="~/Scripts/main/main.js?n=7.5" defer></script>
 <script type="text/javascript" src="~/Scripts/main/animationsmain.js?n=3.6" defer></script>
-<script type="text/javascript" src="~/Scripts/main/loadcatalogsemployee.js?n=4.10" defer></script>
+<script type="text/javascript" src="~/Scripts/main/loadcatalogsemployee.js?n=4.12" defer></script>
 <script type="text/javascript" src="~/Scripts/main/puestos.js?n=2.4" defer></script>
 <script type="text/javascript" src="~/Scripts/main/positions.js?n=2.12" defer></script>
 <script type="text/javascript" src="~/Scripts/main/regionales.js?n=2" defer></script>
